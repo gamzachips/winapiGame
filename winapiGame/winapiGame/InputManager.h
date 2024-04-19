@@ -6,7 +6,8 @@ enum class KeyType
 	Down = VK_DOWN,
 	Left = VK_LEFT,
 	Right = VK_RIGHT,
-	Space = VK_SPACE
+	Space = VK_SPACE,
+	LeftMouse = VK_LBUTTON
 };
 
 enum class KeyState
@@ -39,6 +40,7 @@ public:
 	bool GetButtonPressed(KeyType type) { return GetState(type) == KeyState::Pressed; }
 	bool GetButtonDown(KeyType type) { return GetState(type) == KeyState::Down; }
 	bool GetButtonUp(KeyType type) { return GetState(type) == KeyState::Up; }
+	POINT GetMousePos() { return _mousePos; }
 
 private:
 	KeyState GetState(KeyType key) { return _states[static_cast<uint8>(key)]; }

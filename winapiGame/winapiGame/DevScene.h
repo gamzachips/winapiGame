@@ -2,6 +2,7 @@
 #include "Scene.h"
 
 class Ball;
+class TilemapActor;
 
 class DevScene : public Scene
 {
@@ -14,6 +15,7 @@ public:
 	virtual void Render(HDC hdc) override;
 
 protected:
-	Ball* _ball;
+	Ball* _ball = nullptr;
+	TilemapActor* _tilemapActor = nullptr;
 };
 

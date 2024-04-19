@@ -27,6 +27,9 @@
     <Filter Include="소스 파일\Headers\Default">
       <UniqueIdentifier>{a1dd1ec5-f2e3-45a7-9bcd-96816a7d427c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Tilemap">
+      <UniqueIdentifier>{ab39e82d-f9fe-45ce-a54d-19211f7b2a3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="winapiGame.h">
@@ -77,6 +80,15 @@
     <ClInclude Include="targetver.h">
       <Filter>소스 파일\Headers\Default</Filter>
     </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>소스 파일\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tilemap.h">
+      <Filter>소스 파일\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TilemapActor.h">
+      <Filter>소스 파일\Tilemap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winapiGame.cpp">
@@ -111,6 +123,15 @@
     </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>소스 파일\Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>소스 파일\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Tilemap.cpp">
+      <Filter>소스 파일\Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="TilemapActor.cpp">
+      <Filter>소스 파일\Tilemap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

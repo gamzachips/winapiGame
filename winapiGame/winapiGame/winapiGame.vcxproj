@@ -130,6 +130,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="TilemapActor.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Tilemap.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="DevScene.h" />
     <ClInclude Include="Enums.h" />
@@ -148,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="TilemapActor.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Tilemap.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="DevScene.cpp" />
     <ClCompile Include="Game.cpp" />

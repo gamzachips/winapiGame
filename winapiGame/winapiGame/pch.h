@@ -19,4 +19,10 @@
 
 //TODO
 #include <vector>
+#include <unordered_map>
 using namespace std;
+
+
+//Values
+const int32 GWinSizeX = 1920;
+const int32 GWinSizeY = 1080;

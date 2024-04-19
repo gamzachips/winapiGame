@@ -9,7 +9,6 @@ using uint16 = unsigned __int16;
 using uint32 = unsigned __int32;
 using uint64 = unsigned __int64;
 
-
 struct Vector2D
 {
 	float x, y;
@@ -27,4 +26,18 @@ struct Vector2D
 		temp.y *= f;
 		return temp;
 	}
+};
+
+struct Vector2DInt
+{
+	int x, y;
+};
+
+
+enum class TileType
+{
+	None,
+	Wall,
+	Cracked,
+	Count
 };
