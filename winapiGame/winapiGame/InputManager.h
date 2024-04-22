@@ -7,7 +7,8 @@ enum class KeyType
 	Left = VK_LEFT,
 	Right = VK_RIGHT,
 	Space = VK_SPACE,
-	LeftMouse = VK_LBUTTON
+	LeftMouse = VK_LBUTTON,
+	T = 'T'
 };
 
 enum class KeyState
@@ -46,7 +47,7 @@ private:
 	KeyState GetState(KeyType key) { return _states[static_cast<uint8>(key)]; }
 private:
 	HWND _hwnd = 0;
-	vector<KeyState> _states;
+	KeyState _states[KEY_TYPE_COUNT];
 	POINT _mousePos{};
 };
 

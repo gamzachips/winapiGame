@@ -1,16 +1,19 @@
 #include "pch.h"
-#include "StageScene.h"
+#include "EditScene.h"
 #include "Ball.h"
 #include "TilemapObject.h"
 #include "ResourceManager.h"
 #include "Tilemap.h"
 
-StageScene::StageScene()
+EditScene::EditScene()
 {
+	
 }
 
-StageScene::~StageScene()
+EditScene::~EditScene()
 {
+	_tilemapObject->GetTilemap()->SaveTilemap("Tilemap0");
+
 	if (_ball)
 	{
 		delete _ball;
@@ -24,12 +27,12 @@ StageScene::~StageScene()
 	}
 }
 
-void StageScene::Init()
+void EditScene::Init()
 {
 	{
 		_ball = new Ball;
 	}
-
+	
 	{
 		_tilemapObject = new TilemapObject();
 		Tilemap* tilemap = new Tilemap();
@@ -38,14 +41,16 @@ void StageScene::Init()
 	}
 }
 
-void StageScene::Update()
+void EditScene::Update()
 {
 	_ball->Update();
 	_tilemapObject->Update();
 }
 
-void StageScene::Render(HDC hdc)
+void EditScene::Render(HDC hdc)
 {
 	_ball->Render(hdc);
 	_tilemapObject->Render(hdc);
+
+	::TextOut(hdc, 1300, 30, L"~Edit Scene~", 12);
 }

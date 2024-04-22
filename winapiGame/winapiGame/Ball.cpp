@@ -4,7 +4,7 @@
 
 Ball::Ball()
 {
-
+	_pos = { 100, 100 };
 }
 
 Ball::~Ball()

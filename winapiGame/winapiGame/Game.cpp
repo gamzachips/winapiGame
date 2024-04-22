@@ -32,7 +32,7 @@ void Game::Init(HWND hwnd)
 	InputManager::GetInstance()->Init(hwnd);
 	SceneManager::GetInstance()->Init();
 
-	SceneManager::GetInstance()->ChangeScene(SceneType::DevScene);
+	SceneManager::GetInstance()->ChangeScene(SceneType::StageScene);
 }
 
 void Game::Update()
@@ -57,6 +57,4 @@ void Game::Render()
 	//Double Buffering
 	::BitBlt(_hdc, 0, 0, _rect.right, _rect.bottom, _hdcBack, 0, 0, SRCCOPY); //_hdcBack을 _hdc에 복사
 	::PatBlt(_hdcBack, 0, 0, _rect.right, _rect.bottom, WHITENESS);
-
-
 }

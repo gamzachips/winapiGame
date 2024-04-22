@@ -130,11 +130,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
-    <ClInclude Include="TilemapActor.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="TilemapObject.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Tilemap.h" />
     <ClInclude Include="Utils.h" />
-    <ClInclude Include="DevScene.h" />
+    <ClInclude Include="EditScene.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
@@ -151,11 +152,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="TilemapActor.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="TilemapObject.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Tilemap.cpp" />
     <ClCompile Include="Utils.cpp" />
-    <ClCompile Include="DevScene.cpp" />
+    <ClCompile Include="EditScene.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="StageScene.cpp" />
     <ClCompile Include="InputManager.cpp" />

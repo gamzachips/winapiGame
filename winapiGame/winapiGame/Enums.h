@@ -3,8 +3,13 @@
 enum class SceneType
 {
 	None,
-	DevScene,
-	GameScene,
-	LobbyScene,
-	EndingScene
+	EditScene,
+	StageScene
+};
+
+enum TILE_SIZE
+{
+	TILEMAP_SIZEX = 63,
+	TILEMAP_SIZEY = 43,
+	TILE_SIZE = 48
 };

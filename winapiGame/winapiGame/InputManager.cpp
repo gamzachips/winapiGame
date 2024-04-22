@@ -4,7 +4,6 @@
 void InputManager::Init(HWND hwnd)
 {
 	_hwnd = hwnd;
-	_states.resize(KEY_TYPE_COUNT, KeyState::None);
 }
 
 void InputManager::Update()

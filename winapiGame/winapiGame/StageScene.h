@@ -1,6 +1,9 @@
 #pragma once
 #include "Scene.h"
 
+class Ball;
+class TilemapObject;
+
 class StageScene : public Scene
 {
 public:
@@ -12,5 +15,7 @@ public:
 	virtual void Render(HDC hdc) override;
 
 protected:
+	Ball* _ball = nullptr;
+	TilemapObject* _tilemapObject = nullptr;
 };
 

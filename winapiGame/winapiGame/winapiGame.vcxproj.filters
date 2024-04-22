@@ -53,7 +53,7 @@
     <ClInclude Include="SceneManager.h">
       <Filter>소스 파일\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="DevScene.h">
+    <ClInclude Include="EditScene.h">
       <Filter>소스 파일\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
@@ -86,8 +86,11 @@
     <ClInclude Include="Tilemap.h">
       <Filter>소스 파일\Tilemap</Filter>
     </ClInclude>
-    <ClInclude Include="TilemapActor.h">
-      <Filter>소스 파일\Tilemap</Filter>
+    <ClInclude Include="TilemapObject.h">
+      <Filter>소스 파일\object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>소스 파일\object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -109,7 +112,7 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>소스 파일\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="DevScene.cpp">
+    <ClCompile Include="EditScene.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
@@ -130,8 +133,11 @@
     <ClCompile Include="Tilemap.cpp">
       <Filter>소스 파일\Tilemap</Filter>
     </ClCompile>
-    <ClCompile Include="TilemapActor.cpp">
-      <Filter>소스 파일\Tilemap</Filter>
+    <ClCompile Include="TilemapObject.cpp">
+      <Filter>소스 파일\object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>소스 파일\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
