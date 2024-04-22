@@ -15,7 +15,6 @@ public:
 	virtual void Render(HDC hdc) override;
 
 protected:
-	Ball* _ball = nullptr;
-	TilemapObject* _tilemapObject = nullptr;
+	list<Object*> _objects;
 };
 

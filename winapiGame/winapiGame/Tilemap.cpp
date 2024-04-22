@@ -10,7 +10,7 @@ Tilemap::Tilemap()
 
 Tilemap::~Tilemap()
 {
-	
+	SaveTilemap("Tilemap0");
 }
 
 Tile* Tilemap::GetTileAt(Vector2DInt pos)

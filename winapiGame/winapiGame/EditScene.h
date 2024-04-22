@@ -3,6 +3,7 @@
 
 class Ball;
 class TilemapObject;
+class Object;
 
 class EditScene : public Scene
 {
@@ -15,7 +16,6 @@ public:
 	virtual void Render(HDC hdc) override;
 
 protected:
-	Ball* _ball = nullptr;
-	TilemapObject* _tilemapObject = nullptr;
+	list<Object*> _objects;
 };
 
