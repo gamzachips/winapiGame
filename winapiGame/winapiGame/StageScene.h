@@ -3,6 +3,7 @@
 
 class Ball;
 class TilemapObject;
+class Object;
 
 class StageScene : public Scene
 {

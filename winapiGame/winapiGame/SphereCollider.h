@@ -3,6 +3,11 @@
 
 class SphereCollider : public Collider
 {
-	SphereCollider();
+public:
+	SphereCollider(int radius);
+
+	int32 GetRadius() { return _radius; }
+private:
+	int32 _radius;
 };
 

@@ -46,6 +46,6 @@ void StageScene::Render(HDC hdc)
 {
 	for (list<Object*>::iterator it = _objects.begin(); it != _objects.end(); it++)
 	{
-		(*it)->Render();
+		(*it)->Render(hdc);
 	}
 }

@@ -30,9 +30,6 @@
     <Filter Include="소스 파일\Tilemap">
       <UniqueIdentifier>{ab39e82d-f9fe-45ce-a54d-19211f7b2a3b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Component">
-      <UniqueIdentifier>{800a3899-3a12-436b-ad78-3b02a02902ae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Collider">
       <UniqueIdentifier>{e0d3cd05-e437-4695-b9b1-85da2f913471}</UniqueIdentifier>
     </Filter>
@@ -98,9 +95,6 @@
     <ClInclude Include="Object.h">
       <Filter>소스 파일\object</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>소스 파일\Component</Filter>
-    </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>소스 파일\Collider</Filter>
     </ClInclude>
@@ -109,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="SphereCollider.h">
       <Filter>소스 파일\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>소스 파일\object</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>소스 파일\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,9 +157,6 @@
     <ClCompile Include="Object.cpp">
       <Filter>소스 파일\object</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>소스 파일\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Collider.cpp">
       <Filter>소스 파일\Collider</Filter>
     </ClCompile>
@@ -168,6 +165,12 @@
     </ClCompile>
     <ClCompile Include="SphereCollider.cpp">
       <Filter>소스 파일\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>소스 파일\object</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>소스 파일\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

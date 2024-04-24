@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SphereCollider.h"
 
-SphereCollider::SphereCollider() :Collider(ColliderType::Sphere)
+SphereCollider::SphereCollider(int radius) :Collider(ColliderType::Sphere), _radius(radius)
 {
 
 }

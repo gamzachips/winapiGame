@@ -15,9 +15,10 @@ public:
 	void Jump();
 	void Move();
 	void ApplyGravity();
+	void OnCollisionEnterAboveBlock();
+	void OnCollisionEnterBesideBlock();
 
 	Vector2D GetPos() { return _pos; }
-
 private:
 
 	Vector2D _velocity = {};

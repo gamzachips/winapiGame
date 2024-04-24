@@ -1,4 +1,7 @@
 #pragma once
+
+class Collider;
+
 class Object
 {
 public:
@@ -9,7 +12,10 @@ public:
 	virtual void Update() abstract;
 	virtual void Render(HDC hdc) abstract;
 
+	Vector2D GetPos() { return _pos; }
+
 protected:
 	Vector2D _pos = {};
+	Collider* _collider = nullptr;
 };
 
