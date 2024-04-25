@@ -33,6 +33,10 @@ public:
 	CollisionLayer GetCollisionLayer() { return _layer; }
 	bool CheckCollisionLayer(Collider* other);
 
+	bool IsCollidingWith(Collider* collider);
+	void AddCollidingOne(Collider* collider);
+	void EraseCollidingOne(Collider* collider);
+
 protected:
 	ColliderType _type;
 	CollisionLayer _layer = CollisionLayer::Block;
@@ -40,5 +44,6 @@ protected:
 	bool _bActive = true;
 
 	Object* _owner = nullptr;
+	list<Collider*> _onColliders; //현재 충돌중인 것들
 };
 

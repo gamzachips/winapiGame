@@ -11,12 +11,14 @@ public:
 	virtual void Update() abstract;
 	virtual void Render(HDC hdc) abstract;
 
-	virtual void OnCollisionEnterAbove() abstract;
-	virtual void OnCollisionEnterLeft() abstract;
-	virtual void OnCollisionEnterRight() abstract;
-	virtual void OnCollisionEnterBelow() abstract;
+	virtual void OnCollisionEnterAbove(Collider* collider) abstract;
+	virtual void OnCollisionEnterLeft(Collider* collider) abstract;
+	virtual void OnCollisionEnterRight(Collider* collider) abstract;
+	virtual void OnCollisionEnterBelow(Collider* collider) abstract;
+
 
 protected:
 	Vector2D _size = {};
+
 };
 

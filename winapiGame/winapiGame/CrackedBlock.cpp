@@ -27,21 +27,21 @@ void CrackedBlock::Render(HDC hdc)
 	Utils::DrawRect(hdc, { (float)_pos.x , (float)_pos.y }, TILE_SIZE, TILE_SIZE);
 }
 
-void CrackedBlock::OnCollisionEnterAbove()
+void CrackedBlock::OnCollisionEnterAbove(Collider* collider)
 {
 	Scene* scene = SceneManager::GetInstance()->GetScene();
 	CollisionManager::GetInstance()->RemoveBlockCollider(static_cast<BoxCollider*>(_collider));
 	scene->DestroyObject(this);
 }
 
-void CrackedBlock::OnCollisionEnterLeft()
+void CrackedBlock::OnCollisionEnterLeft(Collider* collider)
 {
 }
 
-void CrackedBlock::OnCollisionEnterRight()
+void CrackedBlock::OnCollisionEnterRight(Collider* collider)
 {
 }
 
-void CrackedBlock::OnCollisionEnterBelow()
+void CrackedBlock::OnCollisionEnterBelow(Collider* collider)
 {
 }

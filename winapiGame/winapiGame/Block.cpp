@@ -30,19 +30,19 @@ void Block::Render(HDC hdc)
 {
 }
 
-void Block::OnCollisionEnterAbove()
+void Block::OnCollisionEnterAbove(Collider* collider)
 {
 }
 
-void Block::OnCollisionEnterLeft()
+void Block::OnCollisionEnterLeft(Collider* collider)
 {
 }
 
-void Block::OnCollisionEnterRight()
+void Block::OnCollisionEnterRight(Collider* collider)
 {
 }
 
 
-void Block::OnCollisionEnterBelow()
+void Block::OnCollisionEnterBelow(Collider* collider)
 {
 }

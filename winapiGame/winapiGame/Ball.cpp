@@ -3,6 +3,8 @@
 #include "InputManager.h"
 #include "SphereCollider.h"
 #include "CollisionManager.h"
+#include "Collider.h"
+#include "BoxCollider.h"
 
 Ball::Ball()
 {
@@ -82,20 +84,37 @@ void Ball::RecordPos()
 	}
 }
 
-void Ball::OnCollisionEnterAbove()
+void Ball::OnCollisionEnterAbove(Collider* collider)
 {
-	
+	if (_bIsColliding)
+		return;
+	_bIsColliding = true;
+
+	BoxCollider* box = static_cast<BoxCollider*>(collider);
+	if (box == nullptr) return;
+
+	Vector2D bSize = box->GetSize();
+	Vector2D bPos = box->GetOwner()->GetPos();
+
+	_pos.y = bPos.y + bSize.y / 2 + _radius;
+	_velocity.y = 0.f;
 }
 
-void Ball::OnCollisionEnterLeft()
+void Ball::OnCollisionEnterLeft(Collider* collider)
 {
+	//Right 누르고 있으면 점프하면서 튕긴다. 
+
+	//아니면, 밀어낸다. 
 }
 
-void Ball::OnCollisionEnterRight()
+void Ball::OnCollisionEnterRight(Collider* collider)
 {
+	//Left 누르고 있으면 점프하면서 튕긴다. 
+
+	//아니면, 밀어낸다. 
 }
 
-void Ball::OnCollisionEnterBelow()
+void Ball::OnCollisionEnterBelow(Collider* collider)
 {
 	Jump();
 }

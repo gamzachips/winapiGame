@@ -85,6 +85,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
     RECT windowRect = { 0, 0, 1920, 1080 };
     ::AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, false);
+    windowRect.top -= ::GetSystemMetrics(SM_CYCAPTION); 
 
     HWND hWnd = CreateWindowW(L"Game", L"BB", WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top,
