@@ -110,6 +110,12 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>소스 파일\Managers</Filter>
     </ClInclude>
+    <ClInclude Include="CrackedBlock.h">
+      <Filter>소스 파일\object</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBlock.h">
+      <Filter>소스 파일\object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winapiGame.cpp">
@@ -171,6 +177,12 @@
     </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
       <Filter>소스 파일\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="CrackedBlock.cpp">
+      <Filter>소스 파일\object</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBlock.cpp">
+      <Filter>소스 파일\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

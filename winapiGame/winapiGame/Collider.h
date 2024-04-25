@@ -13,12 +13,14 @@ public:
 
 	ColliderType GetColliderType() { return _type; }
 	Object* GetOwner() { return _owner; }
+	void SetOwner(Object* owner) { _owner = owner; }
 	void SetActive(bool bActive) { _bActive = bActive; }
 	bool IsActive() { return _bActive; }
 
 	//CollisionTest
 	static bool CheckCollisionSphereAboveBox(SphereCollider* sphere, BoxCollider* box);
-	static bool CheckCollisionSphereBesideBox(SphereCollider* sphere, BoxCollider* box);
+	static bool CheckCollisionSphereLeftBox(SphereCollider* sphere, BoxCollider* box);
+	static bool CheckCollisionSphereRightBox(SphereCollider* sphere, BoxCollider* box);
 	static bool CheckCollisionSphereBelowBox(SphereCollider* sphere, BoxCollider* box);
 
 	//CollisionFlag

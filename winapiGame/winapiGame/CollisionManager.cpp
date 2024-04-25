@@ -10,19 +10,29 @@ void CollisionManager::Init()
 
 void CollisionManager::Update()
 {
+	if (_ballCollider == nullptr)
+		return;
 	for (list<BoxCollider*>::iterator it = _boxColliders.begin(); it != _boxColliders.end(); it++)
 	{
 		if(Collider::CheckCollisionSphereAboveBox(_ballCollider, *it))
 		{
-			dynamic_cast<Ball*>(_ballCollider->GetOwner())->OnCollisionEnterAboveBlock();
+			_ballCollider->GetOwner()->OnCollisionEnterBelow();
+			(*it)->GetOwner()->OnCollisionEnterAbove();
 		}
 		else if (Collider::CheckCollisionSphereBelowBox(_ballCollider, *it))
 		{
-
+			_ballCollider->GetOwner()->OnCollisionEnterAbove();
+			(*it)->GetOwner()->OnCollisionEnterBelow();
 		}
-		else if (Collider::CheckCollisionSphereBesideBox(_ballCollider, *it))
+		else if (Collider::CheckCollisionSphereLeftBox(_ballCollider, *it))
 		{
-
+			_ballCollider->GetOwner()->OnCollisionEnterRight();
+			(*it)->GetOwner()->OnCollisionEnterLeft();
+		}
+		else if (Collider::CheckCollisionSphereRightBox(_ballCollider, *it))
+		{
+			_ballCollider->GetOwner()->OnCollisionEnterLeft();
+			(*it)->GetOwner()->OnCollisionEnterRight();
 		}
 	}
 }

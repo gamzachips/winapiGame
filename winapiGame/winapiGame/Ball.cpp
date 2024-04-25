@@ -7,9 +7,12 @@
 Ball::Ball()
 {
 	_pos = { 100, 100 };
+
+	//Create Collider
 	SphereCollider* collider = new SphereCollider(_radius);
 	collider->SetActive(true);
 	collider->ResetCollisionFlag();
+	collider->SetOwner(this);
 	collider->AddCollisionFlg(CollisionLayer::Block);
 	CollisionManager::GetInstance()->SetBallCollider(collider);
 	_collider = dynamic_cast<Collider*>(collider);
@@ -27,7 +30,6 @@ void Ball::Init()
 void Ball::Update()
 {
 	Move();
-	Jump();
 	ApplyGravity();
 }
 
@@ -38,8 +40,7 @@ void Ball::Render(HDC hdc)
 
 void Ball::Jump()
 {
-	if(InputManager::GetInstance()->GetButtonDown(KeyType::Space))
-		_velocity.y = -_jumpSpeed;
+	_velocity.y = -_jumpSpeed;
 }
 
 void Ball::Move()
@@ -61,14 +62,23 @@ void Ball::ApplyGravity()
 	_velocity.y += _gravity;
 }
 
-void Ball::OnCollisionEnterAboveBlock()
+void Ball::OnCollisionEnterAbove()
+{
+	
+}
+
+void Ball::OnCollisionEnterLeft()
+{
+}
+
+void Ball::OnCollisionEnterRight()
+{
+}
+
+void Ball::OnCollisionEnterBelow()
 {
 	Jump();
 }
 
-void Ball::OnCollisionEnterBesideBlock()
-{
-	//Æ¨±â±â
-}
 
 

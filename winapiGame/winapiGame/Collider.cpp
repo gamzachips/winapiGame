@@ -27,10 +27,10 @@ bool Collider::CheckCollisionSphereAboveBox(SphereCollider* sphere, BoxCollider*
 	Vector2D bSize = box->GetSize();
 
 	//y规氢 眉农 
-	if ((bPos.y - bSize.y / 2) < (sPos.y + sRadius) && bPos.y + bSize.y / 2 > sPos.y + sRadius)
+	if (sPos.y + sRadius > bPos.y - bSize.y / 2  && sPos.y - sRadius < bPos.y  + bSize.y / 2) 
 	{
-		//x规氢 眉农 
-		if ((bPos.x - bSize.x / 2) < sPos.x && (bPos.x + bSize.x) > sPos.x)
+		// x规氢 眉农s
+		if (sPos.x + sRadius > bPos.x - bSize.x / 2 && sPos.x - sRadius < bPos.x + bSize.x / 2) 
 		{
 			return true;
 		}
@@ -38,7 +38,12 @@ bool Collider::CheckCollisionSphereAboveBox(SphereCollider* sphere, BoxCollider*
 	return false;
 }
 
-bool Collider::CheckCollisionSphereBesideBox(SphereCollider* sphere, BoxCollider* box)
+bool Collider::CheckCollisionSphereLeftBox(SphereCollider* sphere, BoxCollider* box)
+{
+	return false;
+}
+
+bool Collider::CheckCollisionSphereRightBox(SphereCollider* sphere, BoxCollider* box)
 {
 	return false;
 }

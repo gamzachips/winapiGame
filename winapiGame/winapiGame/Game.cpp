@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "InputManager.h"
 #include "SceneManager.h"
+#include "CollisionManager.h"
 
 Game::Game()
 {
@@ -31,6 +32,7 @@ void Game::Init(HWND hwnd)
 	TimeManager::GetInstance()->Init();
 	InputManager::GetInstance()->Init(hwnd);
 	SceneManager::GetInstance()->Init();
+	CollisionManager::GetInstance()->Init();
 
 	SceneManager::GetInstance()->ChangeScene(SceneType::StageScene);
 }
@@ -40,6 +42,7 @@ void Game::Update()
 	TimeManager::GetInstance()->Update();
 	InputManager::GetInstance()->Update();
 	SceneManager::GetInstance()->Update();
+	CollisionManager::GetInstance()->Update();
 }
 
 void Game::Render()

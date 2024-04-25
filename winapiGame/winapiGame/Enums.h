@@ -25,3 +25,11 @@ enum class CollisionLayer
 	Ball,
 	Block,
 };
+
+enum class TileType
+{
+	None,
+	Normal,
+	Cracked,
+	Count
+};

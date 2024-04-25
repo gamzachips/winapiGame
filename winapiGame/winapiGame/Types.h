@@ -34,10 +34,3 @@ struct Vector2DInt
 };
 
 
-enum class TileType
-{
-	None,
-	Wall,
-	Cracked,
-	Count
-};

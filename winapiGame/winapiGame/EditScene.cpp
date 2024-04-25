@@ -28,6 +28,7 @@ void EditScene::Init()
 	}
 	
 	{
+		//Create Tilemap
 		TilemapObject* tilemapObject = new TilemapObject();
 		Tilemap* tilemap = new Tilemap();
 		tilemap->LoadTilemap("Tilemap0");

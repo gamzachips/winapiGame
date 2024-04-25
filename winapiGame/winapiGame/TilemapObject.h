@@ -3,8 +3,6 @@
 
 class Tilemap;
 
-
-
 class TilemapObject : public Object
 {
 public:
