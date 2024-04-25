@@ -3,6 +3,8 @@
 #include "Object.h"
 #include "SphereCollider.h"
 #include "BoxCollider.h"
+#include "Ball.h"
+#include "InputManager.h"
 
 Collider::Collider(ColliderType type) : _type(type)
 {
@@ -27,10 +29,10 @@ bool Collider::CheckCollisionSphereAboveBox(SphereCollider* sphere, BoxCollider*
 	Vector2D bSize = box->GetSize();
 
 	//y规氢 眉农 
-	if (sPos.y + sRadius > bPos.y - bSize.y / 2  && sPos.y - sRadius < bPos.y  + bSize.y / 2) 
+	if (sPos.y + sRadius > bPos.y - bSize.y / 2  && sPos.y < bPos.y - bSize.y / 2 )
 	{
 		// x规氢 眉农
-		if (sPos.x + sRadius > bPos.x - bSize.x / 2 && sPos.x - sRadius < bPos.x + bSize.x / 2) 
+		if (sPos.x  > bPos.x - bSize.x / 2 && sPos.x < bPos.x + bSize.x / 2) 
 		{
 			return true;
 		}
@@ -40,11 +42,31 @@ bool Collider::CheckCollisionSphereAboveBox(SphereCollider* sphere, BoxCollider*
 
 bool Collider::CheckCollisionSphereLeftBox(SphereCollider* sphere, BoxCollider* box)
 {
+	Vector2D sPos = sphere->GetOwner()->GetPos();
+	int32 sRadius = sphere->GetRadius();
+	Vector2D bPos = box->GetOwner()->GetPos();
+	Vector2D bSize = box->GetSize();
+
+	if (sPos.y + sRadius > bPos.y - bSize.y / 2 && sPos.y - sRadius < bPos.y + bSize.y)
+	{
+		if (sPos.x - sRadius > bPos.x && sPos.x + sRadius > bPos.x - bSize.x)
+			return true;
+	}
 	return false;
 }
 
 bool Collider::CheckCollisionSphereRightBox(SphereCollider* sphere, BoxCollider* box)
 {
+	Vector2D sPos = sphere->GetOwner()->GetPos();
+	int32 sRadius = sphere->GetRadius();
+	Vector2D bPos = box->GetOwner()->GetPos();
+	Vector2D bSize = box->GetSize();
+
+	if (sPos.y - sRadius > bPos.y - bSize.y / 2 && sPos.y + sRadius < bPos.y + bSize.y / 2)
+	{
+		if (sPos.x - sRadius < bPos.x + bSize.x / 2 && sPos.x > bPos.x + bSize.x / 2)
+			return true;
+	}
 	return false;
 }
 
@@ -56,7 +78,7 @@ bool Collider::CheckCollisionSphereBelowBox(SphereCollider* sphere, BoxCollider*
 	Vector2D bSize = box->GetSize();
 	
 	//y规氢 眉农 
-	if (sPos.y - sRadius > bPos.y - bSize.y / 2 && sPos.y - sRadius < bPos.y + bSize.y / 2)
+	if (sPos.y - sRadius > bPos.y && sPos.y - sRadius < bPos.y + bSize.y / 2)
 	{
 		// x规氢 眉农
 		if (sPos.x + sRadius > bPos.x - bSize.x / 2 && sPos.x - sRadius < bPos.x + bSize.x / 2)

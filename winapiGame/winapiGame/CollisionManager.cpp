@@ -20,33 +20,37 @@ void CollisionManager::Update()
 	{
 		Block* block = static_cast<Block*>((*it)->GetOwner());
 
-		if(!ball->IsColliding() && Collider::CheckCollisionSphereAboveBox(_ballCollider, *it))
-		{
-			_ballCollider->GetOwner()->OnCollisionEnterBelow(*it);
-			block->OnCollisionEnterAbove(_ballCollider);
-			isBallColliding = true;
-		}
-		if (!ball->IsColliding() && Collider::CheckCollisionSphereBelowBox(_ballCollider, *it))
-		{
-			_ballCollider->GetOwner()->OnCollisionEnterAbove(*it);
-			block->OnCollisionEnterBelow(_ballCollider);
-			isBallColliding = true;
-		}
 		if (!ball->IsColliding() && Collider::CheckCollisionSphereLeftBox(_ballCollider, *it))
 		{
-			_ballCollider->GetOwner()->OnCollisionEnterRight(*it);
+			ball->OnCollisionEnterRight(*it);
 			block->OnCollisionEnterLeft(_ballCollider);
 			isBallColliding = true;
 		}
 		if (!ball->IsColliding() && Collider::CheckCollisionSphereRightBox(_ballCollider, *it))
 		{
-			_ballCollider->GetOwner()->OnCollisionEnterLeft(*it);
+			ball->OnCollisionEnterLeft(*it);
 			block->OnCollisionEnterRight(_ballCollider);
 			isBallColliding = true;
 		}
+		if(!ball->IsColliding() && Collider::CheckCollisionSphereAboveBox(_ballCollider, *it))
+		{
+			ball->OnCollisionEnterBelow(*it);
+			block->OnCollisionEnterAbove(_ballCollider);
+			isBallColliding = true;
+		}
+		 if (!ball->IsColliding() && Collider::CheckCollisionSphereBelowBox(_ballCollider, *it))
+		{
+			ball->OnCollisionEnterAbove(*it);
+			block->OnCollisionEnterBelow(_ballCollider);
+			isBallColliding = true;
+		}
+		
 	}
 	if (isBallColliding == false)
+	{
 		ball->SetColliding(false);
+	}
+		
 }
 
 void CollisionManager::CreateBlockCollider(BoxCollider* collider)

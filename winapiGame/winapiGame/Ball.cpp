@@ -32,6 +32,7 @@ void Ball::Init()
 void Ball::Update()
 {
 	_recordTimer += TimeManager::GetInstance()->GetDeltaTime();
+	_inputTimer += TimeManager::GetInstance()->GetDeltaTime();
 	Move();
 	ApplyGravity();
 	RecordPos();
@@ -56,14 +57,24 @@ void Ball::Move()
 {
 	_pos += (_velocity * TimeManager::GetInstance()->GetDeltaTime());
 
-	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
+	if (_inputTimer > 0.2f)
 	{
-		_pos.x -= _moveSpeed * TimeManager::GetInstance()->GetDeltaTime();
+		_inputTimer = 0.f;
+		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
+		{
+			if (_bIsColliding)
+			{
+				_velocity.x = _moveSpeed;
+			}
+			else
+				_velocity.x = -_moveSpeed;
+		}
+		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right) && !_bIsColliding)
+		{
+			_velocity.x = _moveSpeed;
+		}
 	}
-	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right))
-	{
-		_pos.x += _moveSpeed * TimeManager::GetInstance()->GetDeltaTime();
-	}
+	
 }
 
 void Ball::ApplyGravity()
@@ -98,26 +109,37 @@ void Ball::OnCollisionEnterAbove(Collider* collider)
 
 	_pos.y = bPos.y + bSize.y / 2 + _radius;
 	_velocity.y = 0.f;
+
 }
 
 void Ball::OnCollisionEnterLeft(Collider* collider)
 {
-	//Right 누르고 있으면 점프하면서 튕긴다. 
+	if (_bIsColliding)
+		return;
+	_bIsColliding = true;
 
-	//아니면, 밀어낸다. 
+	BoxCollider* box = static_cast<BoxCollider*>(collider);
+	if (box == nullptr) return;
+
+	Vector2D bSize = box->GetSize();
+	Vector2D bPos = box->GetOwner()->GetPos();
+	{
+		_velocity.x += _moveSpeed;
+		_velocity.y = _gravity;
+	}
 }
 
 void Ball::OnCollisionEnterRight(Collider* collider)
 {
 	//Left 누르고 있으면 점프하면서 튕긴다. 
 
-	//아니면, 밀어낸다. 
 }
 
 void Ball::OnCollisionEnterBelow(Collider* collider)
 {
 	Jump();
 }
+
 
 
 

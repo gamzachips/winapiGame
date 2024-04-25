@@ -39,5 +39,6 @@ private:
 
 	list<Vector2D> _prevPoses;
 	float _recordTimer = 0.f;
+	float _inputTimer = 0.f;
 };
 
