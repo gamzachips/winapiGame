@@ -22,6 +22,8 @@ public:
 	void CreateBlockCollider(BoxCollider* collider);
 	void RemoveBlockCollider(BoxCollider* collider);
 
+	void ResetColliders();
+
 private:
 	SphereCollider* _ballCollider;
 	list<BoxCollider*> _boxColliders;

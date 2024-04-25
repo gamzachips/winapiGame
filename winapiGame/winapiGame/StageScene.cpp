@@ -50,10 +50,15 @@ void StageScene::Init()
 						Vector2D pos = {x * TILE_SIZE + TILE_SIZE/2, y * TILE_SIZE + TILE_SIZE / 2 };
 						block->SetPos(pos);
 						_objects.push_back(block);
+						break;
 					}
 					case TileType::Cracked:
 					{
-
+						CrackedBlock* block = new CrackedBlock({ TILE_SIZE,TILE_SIZE });
+						Vector2D pos = { x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2 };
+						block->SetPos(pos);
+						_objects.push_back(block);
+						break;
 					}
 				}
 			}

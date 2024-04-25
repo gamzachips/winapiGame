@@ -16,7 +16,7 @@ public:
 	virtual void OnCollisionEnterRight() abstract;
 	virtual void OnCollisionEnterBelow() abstract;
 
-private:
+protected:
 	Vector2D _size = {};
 };
 

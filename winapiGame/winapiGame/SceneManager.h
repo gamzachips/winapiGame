@@ -20,6 +20,7 @@ public:
 	void Render(HDC hdc);
 	void ChangeSceneByInput();
 	SceneType GetSceneType() { return _sceneType; }
+	Scene* GetScene() { return _scene; }
 
 public:
 	void ChangeScene(SceneType sceneType);

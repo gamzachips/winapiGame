@@ -22,11 +22,7 @@ EditScene::~EditScene()
 
 void EditScene::Init()
 {
-	{
-		Ball* ball = new Ball();
-		_objects.push_back(ball);
-	}
-	
+
 	{
 		//Create Tilemap
 		TilemapObject* tilemapObject = new TilemapObject();

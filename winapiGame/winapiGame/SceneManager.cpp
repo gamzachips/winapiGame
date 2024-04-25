@@ -4,6 +4,7 @@
 #include "EditScene.h"
 #include "StageScene.h"
 #include "InputManager.h"
+#include "CollisionManager.h"
 
 SceneManager::~SceneManager()
 {
@@ -64,5 +65,6 @@ void SceneManager::ChangeScene(SceneType sceneType)
 	_scene = newScene;
 	_sceneType = sceneType;
 
+	CollisionManager::GetInstance()->ResetColliders();
 	newScene->Init();
 }

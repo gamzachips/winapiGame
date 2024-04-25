@@ -1,4 +1,7 @@
 #pragma once
+
+class Object;
+
 class Scene
 {
 public:
@@ -9,6 +12,9 @@ public:
 	virtual void Update() abstract;
 	virtual void Render(HDC hdc) abstract;
 
-protected: 
+	void DestroyObject(Object* object);
+
+protected:
+	list<Object*> _objects;
 };
 

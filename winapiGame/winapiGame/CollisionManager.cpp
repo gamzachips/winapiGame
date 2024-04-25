@@ -48,3 +48,10 @@ void CollisionManager::RemoveBlockCollider(BoxCollider* collider)
 	_boxColliders.erase(it, _boxColliders.end());
 }
 
+void CollisionManager::ResetColliders()
+{
+	_ballCollider = nullptr;
+
+	_boxColliders.clear();
+}
+
