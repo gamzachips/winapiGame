@@ -3,6 +3,8 @@
 #include "Collider.h"
 #include "SceneManager.h"
 #include "Scene.h"
+#include "CollisionManager.h"
+#include "BoxCollider.h"
 
 CrackedBlock::CrackedBlock(Vector2D size) : Block(size)
 {
@@ -28,6 +30,7 @@ void CrackedBlock::Render(HDC hdc)
 void CrackedBlock::OnCollisionEnterAbove()
 {
 	Scene* scene = SceneManager::GetInstance()->GetScene();
+	CollisionManager::GetInstance()->RemoveBlockCollider(static_cast<BoxCollider*>(_collider));
 	scene->DestroyObject(this);
 }
 
