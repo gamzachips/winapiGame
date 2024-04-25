@@ -15,6 +15,7 @@ public:
 	void Jump();
 	void Move();
 	void ApplyGravity();
+	void RecordPos();
 
 	virtual void OnCollisionEnterAbove() override;
 	virtual void OnCollisionEnterLeft() override;
@@ -26,8 +27,11 @@ private:
 
 	Vector2D _velocity = {};
 	int32 _radius = 5;
-	int32 _moveSpeed = 80;
+	int32 _moveSpeed = 120;
 	int32 _jumpSpeed = 600;
-	int32 _gravity = 20;
+	int32 _gravity = 2;
+
+	list<Vector2D> _prevPoses;
+	float _recordTimer = 0.f;
 };
 

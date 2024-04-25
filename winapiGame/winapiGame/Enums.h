@@ -33,3 +33,10 @@ enum class TileType
 	Cracked,
 	Count
 };
+
+enum Color : DWORD
+{
+	BLACK = RGB(0, 0, 0),
+	WHITE = RGB(255, 255, 255),
+	BLUE = RGB(0, 0, 255)
+};

@@ -29,12 +29,19 @@ void Ball::Init()
 
 void Ball::Update()
 {
+	_recordTimer += TimeManager::GetInstance()->GetDeltaTime();
 	Move();
 	ApplyGravity();
+	RecordPos();
 }
 
 void Ball::Render(HDC hdc)
 {
+	for (list<Vector2D>::iterator it = _prevPoses.begin(); it != _prevPoses.end(); ++it)
+	{
+		Utils::DrawCircle(hdc, *it, 5);
+	}
+
 	Utils::DrawCircle(hdc, _pos, 5);
 }
 
@@ -60,6 +67,19 @@ void Ball::Move()
 void Ball::ApplyGravity()
 {
 	_velocity.y += _gravity;
+}
+
+void Ball::RecordPos()
+{
+	if (_recordTimer > 0.01f)
+	{
+		_recordTimer -= 0.01f;
+
+		_prevPoses.push_back(_pos);
+
+		if (_prevPoses.size() > 15)
+			_prevPoses.pop_front();
+	}
 }
 
 void Ball::OnCollisionEnterAbove()
