@@ -31,7 +31,8 @@ private:
 
 	Vector2D _velocity = {};
 	int32 _radius = 5;
-	int32 _moveSpeed = 200;
+	int32 _moveMaxSpeed = 200;
+	int32 _accelSpeed = 100;
 	int32 _jumpSpeed = 600;
 	int32 _gravity = 2;
 

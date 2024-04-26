@@ -47,9 +47,9 @@ bool Collider::CheckCollisionSphereLeftBox(SphereCollider* sphere, BoxCollider* 
 	Vector2D bPos = box->GetOwner()->GetPos();
 	Vector2D bSize = box->GetSize();
 
-	if (sPos.y + sRadius > bPos.y - bSize.y / 2 && sPos.y - sRadius < bPos.y + bSize.y)
+	if (sPos.y - sRadius > bPos.y - bSize.y / 2 && sPos.y + sRadius < bPos.y + bSize.y / 2)
 	{
-		if (sPos.x - sRadius > bPos.x && sPos.x + sRadius > bPos.x - bSize.x)
+		if (sPos.x + sRadius > bPos.x - bSize.x / 2 && sPos.x < bPos.x - bSize.x / 2)
 			return true;
 	}
 	return false;

@@ -57,24 +57,23 @@ void Ball::Move()
 {
 	_pos += (_velocity * TimeManager::GetInstance()->GetDeltaTime());
 
-	if (_inputTimer > 0.2f)
+	if (_inputTimer > 0.1f)
 	{
-		_inputTimer = 0.f;
+		_inputTimer -= 0.1f;
 		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
 		{
-			if (_bIsColliding)
-			{
-				_velocity.x = _moveSpeed;
-			}
-			else
-				_velocity.x = -_moveSpeed;
+			_velocity.x -= _accelSpeed;
 		}
-		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right) && !_bIsColliding)
+		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right))
 		{
-			_velocity.x = _moveSpeed;
+			_velocity.x += _accelSpeed;
 		}
 	}
-	
+
+	if (_velocity.x > _moveMaxSpeed)
+		_velocity.x = _moveMaxSpeed;
+	else if (_velocity.x < -_moveMaxSpeed)
+		_velocity.x = -_moveMaxSpeed;
 }
 
 void Ball::ApplyGravity()
@@ -97,8 +96,6 @@ void Ball::RecordPos()
 
 void Ball::OnCollisionEnterAbove(Collider* collider)
 {
-	if (_bIsColliding)
-		return;
 	_bIsColliding = true;
 
 	BoxCollider* box = static_cast<BoxCollider*>(collider);
@@ -114,8 +111,6 @@ void Ball::OnCollisionEnterAbove(Collider* collider)
 
 void Ball::OnCollisionEnterLeft(Collider* collider)
 {
-	if (_bIsColliding)
-		return;
 	_bIsColliding = true;
 
 	BoxCollider* box = static_cast<BoxCollider*>(collider);
@@ -124,15 +119,30 @@ void Ball::OnCollisionEnterLeft(Collider* collider)
 	Vector2D bSize = box->GetSize();
 	Vector2D bPos = box->GetOwner()->GetPos();
 	{
-		_velocity.x += _moveSpeed;
+		_velocity.x = _moveMaxSpeed;
 		_velocity.y = _gravity;
 	}
+
+	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right))
+		Jump();
 }
 
 void Ball::OnCollisionEnterRight(Collider* collider)
 {
-	//Left 누르고 있으면 점프하면서 튕긴다. 
+	_bIsColliding = true;
 
+	BoxCollider* box = static_cast<BoxCollider*>(collider);
+	if (box == nullptr) return;
+
+	Vector2D bSize = box->GetSize();
+	Vector2D bPos = box->GetOwner()->GetPos();
+	{
+		_velocity.x = -_moveMaxSpeed;
+		_velocity.y = _gravity;
+	}
+
+	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
+		Jump();
 }
 
 void Ball::OnCollisionEnterBelow(Collider* collider)
