@@ -1,17 +1,14 @@
 #pragma once
 #include "Scene.h"
 
-
-class StageScene : public Scene
+class EndingScene : public Scene
 {
 public:
-	StageScene();
-	virtual ~StageScene();
+	EndingScene();
+	virtual ~EndingScene();
 
 	virtual void Init() override;
 	virtual void Update() override;
 	virtual void Render(HDC hdc) override;
-
-
 };
 

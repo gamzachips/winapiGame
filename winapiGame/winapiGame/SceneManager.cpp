@@ -17,12 +17,19 @@ SceneManager::~SceneManager()
 
 void SceneManager::Init()
 {
+	
 }
 
 void SceneManager::Update()
 {
+
 	if (_scene)
 		_scene->Update();
+
+	if (_endFlag)
+	{
+		ChangeScene(SceneType::StageScene);
+	}
 
 	ChangeSceneByInput();
 }
@@ -42,12 +49,21 @@ void SceneManager::ChangeSceneByInput()
 		else if (_sceneType == SceneType::EditScene)
 			ChangeScene(SceneType::StageScene);
 	}
+
+	if (InputManager::GetInstance()->GetButtonDown(KeyType::N))
+	{
+		GoToNextStage();
+		ChangeScene(SceneType::StageScene);
+	}
+}
+
+void SceneManager::EndScene()
+{
+	_endFlag = true;
 }
 
 void SceneManager::ChangeScene(SceneType sceneType)
 {
-	if (_sceneType == sceneType) return;
-
 	Scene* newScene = nullptr;
 
 	switch (sceneType)
@@ -56,7 +72,7 @@ void SceneManager::ChangeScene(SceneType sceneType)
 		newScene = new EditScene();
 		break;
 	case SceneType::StageScene:
-		newScene = new StageScene();
+		newScene = new StageScene(); 
 		break;
 	}
 
@@ -67,4 +83,5 @@ void SceneManager::ChangeScene(SceneType sceneType)
 
 	CollisionManager::GetInstance()->ResetColliders();
 	newScene->Init();
+	_endFlag = false;
 }

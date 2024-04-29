@@ -36,7 +36,7 @@ void TilemapObject::Render(HDC hdc)
 
 	Tile(*tiles)[TILEMAP_SIZEX] = _tilemap->GetTiles();
 	
-	for (int y = 0; y < GWinSizeY / TILE_SIZE; y++)
+	for (int y = 0; y <= GWinSizeY / TILE_SIZE; y++)
 	{
 		for (int x = 0; x < GWinSizeX / TILE_SIZE; x++)
 		{

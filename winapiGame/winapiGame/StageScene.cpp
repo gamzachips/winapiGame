@@ -7,6 +7,7 @@
 #include "Block.h"
 #include "NormalBlock.h"
 #include "CrackedBlock.h"
+#include "SceneManager.h"
 
 StageScene::StageScene()
 {
@@ -19,10 +20,12 @@ StageScene::~StageScene()
 		delete* it;
 		*it = nullptr;
 	}
+	_objects.clear();
 }
 
 void StageScene::Init()
 {
+	
 	{
 		Ball* ball = new Ball;
 		_objects.push_back(ball);
@@ -32,9 +35,8 @@ void StageScene::Init()
 		//Craete Tilemap
 		TilemapObject* tilemapObject = new TilemapObject();
 		Tilemap* tilemap = new Tilemap();
-		tilemap->LoadTilemap("Tilemap0");
+		tilemap->LoadTilemap("Tilemap", SceneManager::GetInstance()->GetStageNum());
 		tilemapObject->SetTilemap(tilemap);
-		//_objects.push_back(tilemapObject);
 
 		//Create Blocks
 		Tile (*tiles)[TILEMAP_SIZEX] = tilemapObject->GetTilemap()->GetTiles();
@@ -72,6 +74,7 @@ void StageScene::Update()
 	{
 		(*it)->Update();
 	}
+
 }
 
 void StageScene::Render(HDC hdc)

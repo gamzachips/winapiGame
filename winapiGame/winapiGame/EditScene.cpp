@@ -4,6 +4,7 @@
 #include "TilemapObject.h"
 #include "ResourceManager.h"
 #include "Tilemap.h"
+#include "SceneManager.h"
 
 EditScene::EditScene()
 {
@@ -27,7 +28,7 @@ void EditScene::Init()
 		//Create Tilemap
 		TilemapObject* tilemapObject = new TilemapObject();
 		Tilemap* tilemap = new Tilemap();
-		tilemap->LoadTilemap("Tilemap0");
+		tilemap->LoadTilemap("Tilemap", SceneManager::GetInstance()->GetStageNum());
 		tilemapObject->SetTilemap(tilemap);
 		_objects.push_back(tilemapObject);
 	}
@@ -47,5 +48,7 @@ void EditScene::Render(HDC hdc)
 	{
 		(*it)->Render(hdc);
 	}
-	::TextOut(hdc, 1300, 30, L"~Edit Scene~", 12);
+	WCHAR buffer[30];
+	swprintf_s(buffer, 30, L"~Edit Scene %d ~", SceneManager::GetInstance()->GetStageNum());
+	::TextOut(hdc, 1300, 30, buffer, 15);
 }

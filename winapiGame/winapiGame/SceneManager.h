@@ -19,13 +19,20 @@ public:
 	void Update();
 	void Render(HDC hdc);
 	void ChangeSceneByInput();
+	void EndScene();
 	SceneType GetSceneType() { return _sceneType; }
 	Scene* GetScene() { return _scene; }
 
 public:
 	void ChangeScene(SceneType sceneType);
+	int GetStageNum() { return _stageNum; }
+	void GoToNextStage() { _stageNum = min(_stageNum + 1, _finalStageNum); }
 private:
 	Scene* _scene = nullptr;
 	SceneType _sceneType = SceneType::None;
+	bool _endFlag = false;
+
+	int _finalStageNum = 2;
+	int _stageNum = 0;
 };
 

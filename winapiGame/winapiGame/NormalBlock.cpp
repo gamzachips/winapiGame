@@ -23,18 +23,3 @@ void NormalBlock::Render(HDC hdc)
 	Utils::DrawRect(hdc, { (float)_pos.x+ 1, (float)_pos.y + 1 }, TILE_SIZE - 25, TILE_SIZE - 25);
 }
 
-void NormalBlock::OnCollisionEnterAbove(Collider* collider)
-{
-}
-
-void NormalBlock::OnCollisionEnterLeft(Collider* collider)
-{
-}
-
-void NormalBlock::OnCollisionEnterRight(Collider* collider)
-{
-}
-
-void NormalBlock::OnCollisionEnterBelow(Collider* collider)
-{
-}

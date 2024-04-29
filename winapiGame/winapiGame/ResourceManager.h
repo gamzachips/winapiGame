@@ -14,9 +14,6 @@ public:
 		return &_instance;
 	}
 
-	//Tilemap* CreateTilemap();
-
 private:
-	//Tilemap* _tilemap;
 };
 

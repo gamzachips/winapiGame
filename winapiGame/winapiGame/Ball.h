@@ -16,6 +16,8 @@ public:
 	void Move();
 	void ApplyGravity();
 	void RecordPos();
+	void CheckFall();
+	void CheckGoal();
 
 	virtual void OnCollisionEnterAbove(Collider* collider) override;
 	virtual void OnCollisionEnterLeft(Collider* collider) override;

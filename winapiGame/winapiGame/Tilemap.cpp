@@ -2,6 +2,7 @@
 #include "Tilemap.h"
 #include <fstream>
 #include <iostream>
+#include "SceneManager.h"
 
 Tilemap::Tilemap()
 {
@@ -10,7 +11,7 @@ Tilemap::Tilemap()
 
 Tilemap::~Tilemap()
 {
-	SaveTilemap("Tilemap0");
+	SaveTilemap("Tilemap", SceneManager::GetInstance()->GetStageNum());
 }
 
 Tile* Tilemap::GetTileAt(Vector2DInt pos)
@@ -21,11 +22,11 @@ Tile* Tilemap::GetTileAt(Vector2DInt pos)
 	return &_tiles[pos.y][pos.x];
 }
 
-void Tilemap::SaveTilemap(const char* fileName)
+void Tilemap::SaveTilemap(const char* fileName, int stage)
 {
 	ofstream ofs;
 	char fileFullName[20];
-	sprintf_s(fileFullName, 20, "%s.text", fileName);
+	sprintf_s(fileFullName, 20, "%s%d.text", fileName, stage);
 	ofs.open(fileFullName);
 
 	if (!ofs.is_open())
@@ -46,11 +47,11 @@ void Tilemap::SaveTilemap(const char* fileName)
 	ofs.close();
 }
 
-void Tilemap::LoadTilemap(const char* fileName)
+void Tilemap::LoadTilemap(const char* fileName, int stage)
 {
 	ifstream ifs;
 	char fileFullName[20];
-	sprintf_s(fileFullName, 20, "%s.text", fileName);
+	sprintf_s(fileFullName, 20, "%s%d.text", fileName, stage);
 	ifs.open(fileFullName);
 
 	if (!ifs.is_open())

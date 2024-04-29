@@ -5,6 +5,9 @@
 #include "CollisionManager.h"
 #include "Collider.h"
 #include "BoxCollider.h"
+#include "SceneManager.h"
+#include "Scene.h"
+#include "StageScene.h"
 
 Ball::Ball()
 {
@@ -36,6 +39,8 @@ void Ball::Update()
 	Move();
 	ApplyGravity();
 	RecordPos();
+	CheckFall();
+	CheckGoal();
 }
 
 void Ball::Render(HDC hdc)
@@ -94,6 +99,23 @@ void Ball::RecordPos()
 	}
 }
 
+void Ball::CheckFall()
+{
+	if (_pos.y > GWinSizeY)
+	{
+		SceneManager::GetInstance()->EndScene();
+	}
+}
+
+void Ball::CheckGoal()
+{
+	if (_pos.x > GWinSizeX)
+	{
+		SceneManager::GetInstance()->GoToNextStage();
+		SceneManager::GetInstance()->EndScene();
+	}
+}
+
 void Ball::OnCollisionEnterAbove(Collider* collider)
 {
 	_bIsColliding = true;
@@ -113,15 +135,8 @@ void Ball::OnCollisionEnterLeft(Collider* collider)
 {
 	_bIsColliding = true;
 
-	BoxCollider* box = static_cast<BoxCollider*>(collider);
-	if (box == nullptr) return;
-
-	Vector2D bSize = box->GetSize();
-	Vector2D bPos = box->GetOwner()->GetPos();
-	{
-		_velocity.x = _moveMaxSpeed;
-		_velocity.y = _gravity;
-	}
+	_velocity.x = _moveMaxSpeed;
+	_velocity.y = _gravity;
 
 	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right))
 		Jump();
@@ -131,15 +146,8 @@ void Ball::OnCollisionEnterRight(Collider* collider)
 {
 	_bIsColliding = true;
 
-	BoxCollider* box = static_cast<BoxCollider*>(collider);
-	if (box == nullptr) return;
-
-	Vector2D bSize = box->GetSize();
-	Vector2D bPos = box->GetOwner()->GetPos();
-	{
-		_velocity.x = -_moveMaxSpeed;
-		_velocity.y = _gravity;
-	}
+	_velocity.x = -_moveMaxSpeed;
+	_velocity.y = _gravity;
 
 	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
 		Jump();

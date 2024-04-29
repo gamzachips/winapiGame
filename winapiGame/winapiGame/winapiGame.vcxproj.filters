@@ -116,6 +116,9 @@
     <ClInclude Include="NormalBlock.h">
       <Filter>소스 파일\object</Filter>
     </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <Filter>소스 파일\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winapiGame.cpp">
@@ -183,6 +186,9 @@
     </ClCompile>
     <ClCompile Include="NormalBlock.cpp">
       <Filter>소스 파일\object</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
