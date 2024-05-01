@@ -8,7 +8,7 @@ public:
 	Scene();
 	virtual ~Scene();
 
-	virtual void Init() abstract;
+	virtual void Init(HWND hwnd) abstract;
 	virtual void Update() abstract;
 	virtual void Render(HDC hdc) abstract;
 

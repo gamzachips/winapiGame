@@ -139,6 +139,7 @@
     <ClInclude Include="NormalBlock.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="SphereCollider.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="TilemapObject.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Tilemap.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="NormalBlock.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="SphereCollider.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TilemapObject.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Tilemap.cpp" />

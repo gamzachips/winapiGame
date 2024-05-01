@@ -8,6 +8,7 @@
 #include "NormalBlock.h"
 #include "CrackedBlock.h"
 #include "SceneManager.h"
+#include "Texture.h"
 
 StageScene::StageScene()
 {
@@ -23,7 +24,7 @@ StageScene::~StageScene()
 	_objects.clear();
 }
 
-void StageScene::Init()
+void StageScene::Init(HWND hwnd)
 {
 	
 	{
@@ -38,6 +39,11 @@ void StageScene::Init()
 		tilemap->LoadTilemap("Tilemap", SceneManager::GetInstance()->GetStageNum());
 		tilemapObject->SetTilemap(tilemap);
 
+		Texture* normalBlockT = new Texture;
+		normalBlockT->LoadBmp(hwnd, L"NormalBlock.bmp");
+		Texture* crackedBlockT = new Texture;
+		crackedBlockT->LoadBmp(hwnd, L"CrackedBlock.bmp");
+
 		//Create Blocks
 		Tile (*tiles)[TILEMAP_SIZEX] = tilemapObject->GetTilemap()->GetTiles();
 		for (int y = 0; y < TILEMAP_SIZEY; y++)
@@ -51,6 +57,7 @@ void StageScene::Init()
 						NormalBlock* block = new NormalBlock({ TILE_SIZE,TILE_SIZE });
 						Vector2D pos = {x * TILE_SIZE + TILE_SIZE/2, y * TILE_SIZE + TILE_SIZE / 2 };
 						block->SetPos(pos);
+						block->SetTexture(normalBlockT); 
 						_objects.push_back(block);
 						break;
 					}
@@ -59,6 +66,7 @@ void StageScene::Init()
 						CrackedBlock* block = new CrackedBlock({ TILE_SIZE,TILE_SIZE });
 						Vector2D pos = { x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2 };
 						block->SetPos(pos);
+						block->SetTexture(crackedBlockT);
 						_objects.push_back(block);
 						break;
 					}

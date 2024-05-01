@@ -8,7 +8,7 @@ public:
 	EditScene();
 	virtual ~EditScene();
 
-	virtual void Init() override;
+	virtual void Init(HWND hwnd) override;
 	virtual void Update() override;
 	virtual void Render(HDC hdc) override;
 

@@ -15,9 +15,9 @@ SceneManager::~SceneManager()
 	}
 }
 
-void SceneManager::Init()
+void SceneManager::Init(HWND hwnd)
 {
-	
+	_hwnd = hwnd;
 }
 
 void SceneManager::Update()
@@ -82,6 +82,6 @@ void SceneManager::ChangeScene(SceneType sceneType)
 	_sceneType = sceneType;
 
 	CollisionManager::GetInstance()->ResetColliders();
-	newScene->Init();
+	newScene->Init(_hwnd);
 	_endFlag = false;
 }

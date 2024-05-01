@@ -33,6 +33,9 @@
     <Filter Include="소스 파일\Collider">
       <UniqueIdentifier>{e0d3cd05-e437-4695-b9b1-85da2f913471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Resources">
+      <UniqueIdentifier>{97b5f163-2fed-461d-a38a-e7734e172ccc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="winapiGame.h">
@@ -119,6 +122,9 @@
     <ClInclude Include="EndingScene.h">
       <Filter>소스 파일\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>소스 파일\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winapiGame.cpp">
@@ -189,6 +195,9 @@
     </ClCompile>
     <ClCompile Include="EndingScene.cpp">
       <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>소스 파일\Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

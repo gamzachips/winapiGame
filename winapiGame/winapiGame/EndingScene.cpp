@@ -9,7 +9,7 @@ EndingScene::~EndingScene()
 {
 }
 
-void EndingScene::Init()
+void EndingScene::Init(HWND hwnd)
 {
 }
 

@@ -21,7 +21,7 @@ EditScene::~EditScene()
 	}
 }
 
-void EditScene::Init()
+void EditScene::Init(HWND hwnd)
 {
 
 	{

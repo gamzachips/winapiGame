@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "CollisionManager.h"
 #include "BoxCollider.h"
+#include "Texture.h"
 
 CrackedBlock::CrackedBlock(Vector2D size) : Block(size)
 {
@@ -24,7 +25,9 @@ void CrackedBlock::Update()
 
 void CrackedBlock::Render(HDC hdc)
 {
-	Utils::DrawRect(hdc, { (float)_pos.x , (float)_pos.y }, TILE_SIZE, TILE_SIZE);
+	//Utils::DrawRect(hdc, { (float)_pos.x , (float)_pos.y }, TILE_SIZE, TILE_SIZE);
+	::StretchBlt(hdc, _pos.x - TILE_SIZE / 2, _pos.y - TILE_SIZE / 2, TILE_SIZE + 14, TILE_SIZE + 14, _texture->GetDC(),
+		0, 0, 42, 42, SRCCOPY);
 }
 
 void CrackedBlock::OnCollisionEnterAbove(Collider* collider)
