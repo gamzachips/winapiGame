@@ -34,8 +34,9 @@ void Ball::Init()
 
 void Ball::Update()
 {
-	_recordTimer += TimeManager::GetInstance()->GetDeltaTime();
-	_inputTimer += TimeManager::GetInstance()->GetDeltaTime();
+	_deltaTime = TimeManager::GetInstance()->GetDeltaTime();
+	_recordTimer += _deltaTime;
+	_inputTimer += _deltaTime;
 	Move();
 	ApplyGravity();
 	RecordPos();
@@ -60,11 +61,11 @@ void Ball::Jump()
 
 void Ball::Move()
 {
-	_pos += (_velocity * TimeManager::GetInstance()->GetDeltaTime());
+	_pos += (_velocity);
 
-	if (_inputTimer > 0.1f)
+	if (_inputTimer > 0.08f)
 	{
-		_inputTimer -= 0.1f;
+		_inputTimer -= 0.08f;
 		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
 		{
 			_velocity.x -= _accelSpeed;

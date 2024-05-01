@@ -1,4 +1,5 @@
 #pragma once
+#include <Windows.h>
 class Game
 {
 public:
@@ -7,6 +8,7 @@ public:
 
 public:
 	void Init(HWND hwnd);
+	void FixedUpdate();
 	void Update();
 	void Render();
 
@@ -18,5 +20,7 @@ private:
 	RECT _rect;
 	HDC _hdcBack = {};
 	HBITMAP _bmpBack = {};
+
+	float _fixedTimer = 0.f;
 };
 

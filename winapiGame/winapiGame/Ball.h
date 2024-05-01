@@ -33,15 +33,16 @@ private:
 
 	Vector2D _velocity = {};
 	int32 _radius = 5;
-	int32 _moveMaxSpeed = 200;
-	int32 _accelSpeed = 100;
-	int32 _jumpSpeed = 600;
-	int32 _gravity = 2;
+	float _moveMaxSpeed = 0.7;
+	float _accelSpeed = 0.23;
+	float _jumpSpeed = 2;
+	float _gravity = 0.02;
 
 	bool _bIsColliding = false;
 
 	list<Vector2D> _prevPoses;
 	float _recordTimer = 0.f;
 	float _inputTimer = 0.f;
+	float _deltaTime = 0.f;
 };
 

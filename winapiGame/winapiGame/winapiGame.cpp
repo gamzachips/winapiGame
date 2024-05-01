@@ -30,8 +30,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Game game;
     game.Init(g_hWnd);
 
-    int64 prevTick = ::GetTickCount64();
-
     MSG msg{};
 
     //메인 루프
@@ -44,12 +42,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            uint64 nowTick = ::GetTickCount64();
-            {
-                game.Update();
-                game.Render();
-                prevTick = nowTick;
-            }
+            game.FixedUpdate();
+            game.Update();
+            game.Render();
         }
     }
 
@@ -83,9 +78,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-    RECT windowRect = { 0, 0, 1920, 1080 };
+    RECT windowRect = { 0, 0, GWinSizeX, GWinSizeY };
     ::AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, false);
-    windowRect.top -= ::GetSystemMetrics(SM_CYCAPTION); 
+    windowRect.top -= ::GetSystemMetrics(SM_CYCAPTION);
 
     HWND hWnd = CreateWindowW(L"Game", L"BB", WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top,

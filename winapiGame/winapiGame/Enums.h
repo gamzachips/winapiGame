@@ -9,8 +9,8 @@ enum class SceneType
 
 enum TILE_SIZE
 {
-	TILEMAP_SIZEX = 63,
-	TILEMAP_SIZEY = 43,
+	TILEMAP_SIZEX = 40,
+	TILEMAP_SIZEY = 22,
 	TILE_SIZE = 48
 };
 

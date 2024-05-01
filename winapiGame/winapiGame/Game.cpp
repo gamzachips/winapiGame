@@ -13,7 +13,7 @@ Game::Game()
 Game::~Game()
 {
 
-	::_CrtDumpMemoryLeaks();
+	//::_CrtDumpMemoryLeaks();
 }
 
 void Game::Init(HWND hwnd)
@@ -37,12 +37,22 @@ void Game::Init(HWND hwnd)
 	SceneManager::GetInstance()->ChangeScene(SceneType::StageScene);
 }
 
+void Game::FixedUpdate()
+{
+	while(_fixedTimer >= 0.0035f)
+	{
+		InputManager::GetInstance()->Update();
+		SceneManager::GetInstance()->Update();
+		CollisionManager::GetInstance()->Update();
+		_fixedTimer -= 0.0035f;
+	}
+}
+
 void Game::Update()
 {
+	_fixedTimer += TimeManager::GetInstance()->GetDeltaTime();
 	TimeManager::GetInstance()->Update();
-	InputManager::GetInstance()->Update();
-	SceneManager::GetInstance()->Update();
-	CollisionManager::GetInstance()->Update();
+
 }
 
 void Game::Render()
