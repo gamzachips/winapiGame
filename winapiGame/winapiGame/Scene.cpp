@@ -8,6 +8,12 @@ Scene::Scene()
 
 Scene::~Scene()
 {
+	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
+	{
+		delete* it;
+		*it = nullptr;
+	}
+	_objects.Clear();
 }
 
 void Scene::DestroyObject(Object* object)

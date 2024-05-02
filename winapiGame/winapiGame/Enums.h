@@ -4,7 +4,8 @@ enum class SceneType
 {
 	None,
 	EditScene,
-	StageScene
+	StageScene,
+	EndingScene
 };
 
 enum TILE_SIZE

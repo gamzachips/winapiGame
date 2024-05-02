@@ -5,6 +5,7 @@
 #include "StageScene.h"
 #include "InputManager.h"
 #include "CollisionManager.h"
+#include "EndingScene.h"
 
 SceneManager::~SceneManager()
 {
@@ -28,7 +29,10 @@ void SceneManager::Update()
 
 	if (_endFlag)
 	{
-		ChangeScene(SceneType::StageScene);
+		if (_stageNum > _finalStageNum)
+			ChangeScene(SceneType::EndingScene);
+		else
+			ChangeScene(SceneType::StageScene);
 	}
 
 	ChangeSceneByInput();
@@ -73,6 +77,9 @@ void SceneManager::ChangeScene(SceneType sceneType)
 		break;
 	case SceneType::StageScene:
 		newScene = new StageScene(); 
+		break;
+	case SceneType::EndingScene:
+		newScene = new EndingScene();
 		break;
 	}
 

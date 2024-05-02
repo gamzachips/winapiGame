@@ -57,12 +57,7 @@ void Game::Update()
 
 void Game::Render()
 {
-
 	SceneManager::GetInstance()->Render(_hdcBack);
-
-	WCHAR buffer[30];
-	swprintf_s(buffer, 30, L"Stage %d", SceneManager::GetInstance()->GetStageNum());
-	Utils::DrawTextWithFontSize(_hdcBack, { 1500, 30 }, buffer, 50);
 
 	//Double Buffering
 	::BitBlt(_hdc, 0, 0, _rect.right, _rect.bottom, _hdcBack, 0, 0, SRCCOPY); //_hdcBack을 _hdc에 복사

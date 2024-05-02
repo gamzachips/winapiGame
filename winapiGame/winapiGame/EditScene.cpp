@@ -13,8 +13,6 @@ EditScene::EditScene()
 
 EditScene::~EditScene()
 {
-
-	_objects.Clear();
 }
 
 void EditScene::Init(HWND hwnd)

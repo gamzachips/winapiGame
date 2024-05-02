@@ -64,20 +64,18 @@ void Ball::Move()
 {
 	_pos += (_velocity);
 
-	if(_inputTimer > 0.02f)
+
+	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
 	{
-		_inputTimer -= 0.02f;
-		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
-		{
-			_velocity.x -= _accelSpeed;
-			_bStraight = false;
-		}
-		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right))
-		{
-			_velocity.x += _accelSpeed;
-			_bStraight = false;
-		}
+		_velocity.x -= _accelSpeed;
+		_bStraight = false;
 	}
+	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right))
+	{
+		_velocity.x += _accelSpeed;
+		_bStraight = false;
+	}
+
 
 	if (!_bStraight)
 	{
@@ -92,15 +90,15 @@ void Ball::Move()
 void Ball::ApplyGravity()
 {
 	if (_bStraight) return;
-	_velocity.y += _gravity;
+	_velocity.y += _gravity ;
 }
 
 void Ball::GoStraight(bool left)
 {
 	if(left)
-		_velocity.x = -_moveMaxSpeed * 2;
+		_velocity.x = -_moveMaxSpeed * 2 ;
 	else
-		_velocity.x = _moveMaxSpeed * 2;
+		_velocity.x = _moveMaxSpeed * 2 ;
 	_velocity.y = 0;
 	_bStraight = true;
 }
@@ -123,6 +121,7 @@ void Ball::CheckFall()
 	if (_pos.y > GWinSizeY)
 	{
 		SceneManager::GetInstance()->EndScene();
+		SceneManager::GetInstance()->IncreaseTrialNum();
 	}
 }
 
@@ -160,7 +159,7 @@ void Ball::OnCollisionEnterLeft(Collider* collider)
 
 	_bStraight = false;
 
-	_velocity.x = _moveMaxSpeed;
+	_velocity.x = _moveMaxSpeed ;
 	_velocity.y = _gravity;
 
 	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right))
@@ -177,7 +176,7 @@ void Ball::OnCollisionEnterRight(Collider* collider)
 
 	_bStraight = false;
 	_velocity.x = -_moveMaxSpeed;
-	_velocity.y = _gravity;
+	_velocity.y = _gravity ;
 
 	if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
 		Jump();

@@ -29,6 +29,7 @@ void BombBlock::Render(HDC hdc)
 void BombBlock::OnCollisionEnterAbove(Collider* collider)
 {
 	SceneManager::GetInstance()->EndScene();
+	SceneManager::GetInstance()->IncreaseTrialNum();
 }
 
 void BombBlock::OnCollisionEnterLeft(Collider* collider)

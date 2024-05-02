@@ -26,14 +26,17 @@ public:
 public:
 	void ChangeScene(SceneType sceneType);
 	int GetStageNum() { return _stageNum; }
-	void GoToNextStage() { _stageNum = min(_stageNum + 1, _finalStageNum); }
+	void GoToNextStage() { _stageNum++; }
+	void IncreaseTrialNum() { _trialNum++; }
+	int32 GetTrialNum() { return _trialNum; }
 private:
 	HWND _hwnd = {};
 	Scene* _scene = nullptr;
 	SceneType _sceneType = SceneType::None;
 	bool _endFlag = false;
 
-	int _finalStageNum = 2;
-	int _stageNum = 0;
+	int32 _finalStageNum = 2;
+	int32 _stageNum = 0;
+	int32 _trialNum = 1;
 };
 

@@ -18,7 +18,7 @@ StageScene::StageScene()
 
 StageScene::~StageScene()
 {
-	_objects.Clear();
+	
 }
 
 void StageScene::Init(HWND hwnd)
@@ -115,4 +115,13 @@ void StageScene::Render(HDC hdc)
 	{
 		(*it)->Render(hdc);
 	}
+
+
+	WCHAR buffer[30];
+	swprintf_s(buffer, 30, L"Stage %d", SceneManager::GetInstance()->GetStageNum() + 1);
+	Utils::DrawTextWithFontSize(hdc, { 1500, 30 }, buffer, 50);
+
+	swprintf_s(buffer, 30, L"½ÃµµÈ½¼ö: %d", SceneManager::GetInstance()->GetTrialNum());
+	Utils::DrawTextWithFontSize(hdc, { 1700, 50 }, buffer, 30);
+
 }

@@ -4,7 +4,7 @@ template<typename T>
 class Node
 {
 public:
-	T data;
+	T _data;
 	Node* _next;
 	Node* _prev;
 };
@@ -29,7 +29,7 @@ public:
 		}
 		T& operator*()
 		{
-			return _node->data;
+			return _node->_data;
 		}
 		bool operator==(const Iterator& other)
 		{
@@ -79,7 +79,7 @@ public:
 		_size++;
 		Node<T>* newNode = new Node<T>;
 		Node<T>* nextNode = pos._node->_next;
-		newNode->data = data;
+		newNode->_data = data;
 
 		pos._node->_next = newNode;
 		newNode->_prev = pos._node;
@@ -100,7 +100,6 @@ public:
 
 	Iterator Erase(Iterator pos)
 	{
-		_size--;
 		Node<T>* prevNode = pos._node->_prev;
 		Node<T>* nextNode = pos._node->_next;
 		
@@ -108,7 +107,8 @@ public:
 		nextNode->_prev = prevNode;
 
 		delete pos._node;
-
+		
+		_size--;
 		return Iterator(nextNode);
 	}
 
