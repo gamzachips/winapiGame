@@ -9,7 +9,8 @@ enum class KeyType
 	Space = VK_SPACE,
 	LeftMouse = VK_LBUTTON,
 	T = 'T',
-	N = 'N'
+	N = 'N',
+	ESC = VK_ESCAPE
 };
 
 enum class KeyState

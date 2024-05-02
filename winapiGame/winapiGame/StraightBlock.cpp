@@ -40,19 +40,33 @@ void StraightBlock::OnCollisionEnterAbove(Collider* collider)
 {
 	Ball* ball = static_cast<Ball*>(collider->GetOwner());
 	if(_left)	
-		ball->SetPos({ _pos.x - TILE_SIZE / 2, _pos.y });
+		ball->SetPos({ _pos.x - TILE_SIZE, _pos.y });
 	else
-		ball->SetPos({ _pos.x + TILE_SIZE / 2, _pos.y });
+		ball->SetPos({ _pos.x + TILE_SIZE, _pos.y });
 
 	ball->GoStraight(_left);
 }
 
 void StraightBlock::OnCollisionEnterLeft(Collider* collider)
 {
+	Ball* ball = static_cast<Ball*>(collider->GetOwner());
+	if (_left)
+		ball->SetPos({ _pos.x - TILE_SIZE, _pos.y });
+	else
+		ball->SetPos({ _pos.x + TILE_SIZE, _pos.y });
+
+	ball->GoStraight(_left);
 }
 
 void StraightBlock::OnCollisionEnterRight(Collider* collider)
 {
+	Ball* ball = static_cast<Ball*>(collider->GetOwner());
+	if (_left)
+		ball->SetPos({ _pos.x - TILE_SIZE, _pos.y });
+	else
+		ball->SetPos({ _pos.x + TILE_SIZE, _pos.y });
+
+	ball->GoStraight(_left);
 }
 
 void StraightBlock::OnCollisionEnterBelow(Collider* collider)

@@ -102,6 +102,7 @@ void StageScene::Init(HWND hwnd)
 
 void StageScene::Update()
 {
+	Scene::Update();
 	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
 	{
 		(*it)->Update();

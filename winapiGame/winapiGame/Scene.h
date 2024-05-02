@@ -9,7 +9,7 @@ public:
 	virtual ~Scene();
 
 	virtual void Init(HWND hwnd) abstract;
-	virtual void Update() abstract;
+	virtual void Update();
 	virtual void Render(HDC hdc) abstract;
 
 	void DestroyObject(Object* object);

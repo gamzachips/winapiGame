@@ -29,6 +29,8 @@ public:
 	void GoToNextStage() { _stageNum++; }
 	void IncreaseTrialNum() { _trialNum++; }
 	int32 GetTrialNum() { return _trialNum; }
+	void RestartGame();
+
 private:
 	HWND _hwnd = {};
 	Scene* _scene = nullptr;

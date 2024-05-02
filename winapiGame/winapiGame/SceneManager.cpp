@@ -92,3 +92,10 @@ void SceneManager::ChangeScene(SceneType sceneType)
 	newScene->Init(_hwnd);
 	_endFlag = false;
 }
+
+void SceneManager::RestartGame()
+{
+	_stageNum = 0;
+	_trialNum = 1;
+	_endFlag = true;
+}

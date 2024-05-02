@@ -16,6 +16,7 @@ void EndingScene::Init(HWND hwnd)
 
 void EndingScene::Update()
 {
+	Scene::Update();
 }
 
 void EndingScene::Render(HDC hdc)

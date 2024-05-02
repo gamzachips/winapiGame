@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Object.h"
+#include "InputManager.h"
+#include "SceneManager.h"
 
 Scene::Scene()
 {
@@ -14,6 +16,15 @@ Scene::~Scene()
 		*it = nullptr;
 	}
 	_objects.Clear();
+}
+
+void Scene::Update()
+{
+	if (InputManager::GetInstance()->GetButtonDown(KeyType::ESC))
+	{
+
+		SceneManager::GetInstance()->RestartGame();
+	}
 }
 
 void Scene::DestroyObject(Object* object)
