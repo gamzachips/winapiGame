@@ -158,6 +158,8 @@ void Ball::OnCollisionEnterLeft(Collider* collider)
 	if (type == TileType::StraightLeft || type == TileType::StraightRight)
 		return;
 
+	_bStraight = false;
+
 	_velocity.x = _moveMaxSpeed;
 	_velocity.y = _gravity;
 
@@ -173,6 +175,7 @@ void Ball::OnCollisionEnterRight(Collider* collider)
 	if (type == TileType::StraightLeft || type == TileType::StraightRight)
 		return;
 
+	_bStraight = false;
 	_velocity.x = -_moveMaxSpeed;
 	_velocity.y = _gravity;
 
