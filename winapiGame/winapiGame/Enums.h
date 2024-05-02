@@ -31,6 +31,9 @@ enum class TileType
 	None,
 	Normal,
 	Cracked,
+	Bomb,
+	StraightLeft,
+	StraightRight,
 	Count
 };
 

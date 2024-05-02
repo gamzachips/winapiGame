@@ -3,7 +3,7 @@
 #include "BoxCollider.h"
 #include "CollisionManager.h"
 
-Block::Block(Vector2D size) : _size(size)
+Block::Block(Vector2D size, TileType type) : _size(size), _type(type)
 {
 	BoxCollider* collider = new BoxCollider(_size);
 	collider->SetActive(true);

@@ -9,6 +9,8 @@
 #include "CrackedBlock.h"
 #include "SceneManager.h"
 #include "Texture.h"
+#include "BombBlock.h"
+#include "StraightBlock.h"
 
 StageScene::StageScene()
 {
@@ -43,6 +45,10 @@ void StageScene::Init(HWND hwnd)
 		normalBlockT->LoadBmp(hwnd, L"NormalBlock.bmp");
 		Texture* crackedBlockT = new Texture;
 		crackedBlockT->LoadBmp(hwnd, L"CrackedBlock.bmp");
+		Texture* bombBlockT = new Texture;
+		bombBlockT->LoadBmp(hwnd, L"BombBlock.bmp");
+		Texture* straightBlockT = new Texture;
+		straightBlockT->LoadBmp(hwnd, L"StraightBlock.bmp");
 
 		//Create Blocks
 		Tile (*tiles)[TILEMAP_SIZEX] = tilemapObject->GetTilemap()->GetTiles();
@@ -67,6 +73,29 @@ void StageScene::Init(HWND hwnd)
 						Vector2D pos = { x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2 };
 						block->SetPos(pos);
 						block->SetTexture(crackedBlockT);
+						_objects.push_back(block);
+						break;
+					}
+					case TileType::Bomb:
+					{
+						BombBlock* block = new BombBlock({ TILE_SIZE,TILE_SIZE });
+						Vector2D pos = { x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2 };
+						block->SetPos(pos);
+						block->SetTexture(bombBlockT);
+						_objects.push_back(block);
+						break;
+					}
+					case TileType::StraightLeft:
+					case TileType::StraightRight:
+					{
+						StraightBlock* block;
+						if(tiles[y][x].type == TileType::StraightLeft)
+							block = new StraightBlock({ TILE_SIZE,TILE_SIZE }, true);
+						else
+							block = new StraightBlock({ TILE_SIZE,TILE_SIZE }, false);
+						Vector2D pos = { x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2 };
+						block->SetPos(pos);
+						block->SetTexture(straightBlockT);
 						_objects.push_back(block);
 						break;
 					}

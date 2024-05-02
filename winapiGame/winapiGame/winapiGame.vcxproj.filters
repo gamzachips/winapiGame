@@ -125,6 +125,12 @@
     <ClInclude Include="Texture.h">
       <Filter>소스 파일\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="BombBlock.h">
+      <Filter>소스 파일\object</Filter>
+    </ClInclude>
+    <ClInclude Include="StraightBlock.h">
+      <Filter>소스 파일\object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winapiGame.cpp">
@@ -198,6 +204,12 @@
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>소스 파일\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="BombBlock.cpp">
+      <Filter>소스 파일\object</Filter>
+    </ClCompile>
+    <ClCompile Include="StraightBlock.cpp">
+      <Filter>소스 파일\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

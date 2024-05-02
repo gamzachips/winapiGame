@@ -7,7 +7,7 @@
 #include "BoxCollider.h"
 #include "Texture.h"
 
-CrackedBlock::CrackedBlock(Vector2D size) : Block(size)
+CrackedBlock::CrackedBlock(Vector2D size) : Block(size, TileType::Cracked)
 {
 }
 

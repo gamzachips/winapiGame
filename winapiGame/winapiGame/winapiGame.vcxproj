@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Block.h" />
+    <ClInclude Include="BombBlock.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
@@ -139,6 +140,7 @@
     <ClInclude Include="NormalBlock.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="SphereCollider.h" />
+    <ClInclude Include="StraightBlock.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TilemapObject.h" />
     <ClInclude Include="ResourceManager.h" />
@@ -162,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="BombBlock.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
@@ -170,6 +173,7 @@
     <ClCompile Include="NormalBlock.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="SphereCollider.cpp" />
+    <ClCompile Include="StraightBlock.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TilemapObject.cpp" />
     <ClCompile Include="ResourceManager.cpp" />

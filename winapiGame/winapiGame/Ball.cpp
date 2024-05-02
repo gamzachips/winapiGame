@@ -8,6 +8,7 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "StageScene.h"
+#include "Block.h"
 
 Ball::Ball()
 {
@@ -63,28 +64,45 @@ void Ball::Move()
 {
 	_pos += (_velocity);
 
-	if (_inputTimer > 0.08f)
+	if(_inputTimer > 0.02f)
 	{
-		_inputTimer -= 0.08f;
+		_inputTimer -= 0.02f;
 		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Left))
 		{
 			_velocity.x -= _accelSpeed;
+			_bStraight = false;
 		}
 		if (InputManager::GetInstance()->GetButtonPressed(KeyType::Right))
 		{
 			_velocity.x += _accelSpeed;
+			_bStraight = false;
 		}
 	}
 
-	if (_velocity.x > _moveMaxSpeed)
-		_velocity.x = _moveMaxSpeed;
-	else if (_velocity.x < -_moveMaxSpeed)
-		_velocity.x = -_moveMaxSpeed;
+	if (!_bStraight)
+	{
+		if (_velocity.x > _moveMaxSpeed)
+			_velocity.x = _moveMaxSpeed;
+		else if (_velocity.x < -_moveMaxSpeed)
+			_velocity.x = -_moveMaxSpeed;
+	}
+
 }
 
 void Ball::ApplyGravity()
 {
+	if (_bStraight) return;
 	_velocity.y += _gravity;
+}
+
+void Ball::GoStraight(bool left)
+{
+	if(left)
+		_velocity.x = -_moveMaxSpeed * 2;
+	else
+		_velocity.x = _moveMaxSpeed * 2;
+	_velocity.y = 0;
+	_bStraight = true;
 }
 
 void Ball::RecordPos()
@@ -136,6 +154,10 @@ void Ball::OnCollisionEnterLeft(Collider* collider)
 {
 	_bIsColliding = true;
 
+	TileType type = static_cast<Block*>(collider->GetOwner())->GetTileType();
+	if (type == TileType::StraightLeft || type == TileType::StraightRight)
+		return;
+
 	_velocity.x = _moveMaxSpeed;
 	_velocity.y = _gravity;
 
@@ -147,6 +169,10 @@ void Ball::OnCollisionEnterRight(Collider* collider)
 {
 	_bIsColliding = true;
 
+	TileType type = static_cast<Block*>(collider->GetOwner())->GetTileType();
+	if (type == TileType::StraightLeft || type == TileType::StraightRight)
+		return;
+
 	_velocity.x = -_moveMaxSpeed;
 	_velocity.y = _gravity;
 
@@ -156,6 +182,10 @@ void Ball::OnCollisionEnterRight(Collider* collider)
 
 void Ball::OnCollisionEnterBelow(Collider* collider)
 {
+	TileType type = static_cast<Block*>(collider->GetOwner())->GetTileType();
+	if (type == TileType::StraightLeft || type == TileType::StraightRight)
+		return;
+
 	Jump();
 }
 

@@ -55,6 +55,17 @@ void TilemapObject::Render(HDC hdc)
 				break;
 			case TileType::Cracked:
 				Utils::DrawRect(hdc, { TILE_SIZE / 2 + (float)x * TILE_SIZE, TILE_SIZE / 2 + (float)y * TILE_SIZE }, TILE_SIZE, TILE_SIZE);
+				break;
+			case TileType::Bomb:
+				Utils::DrawRect(hdc, { TILE_SIZE / 2 + (float)x * TILE_SIZE, TILE_SIZE / 2 + (float)y * TILE_SIZE }, TILE_SIZE, TILE_SIZE);
+				Utils::DrawCircle(hdc, { TILE_SIZE / 2 + (float)x * TILE_SIZE, TILE_SIZE / 2 + (float)y * TILE_SIZE }, 10);
+				break;
+			case TileType::StraightLeft:
+			case TileType::StraightRight:
+				Utils::DrawRect(hdc, { TILE_SIZE / 2 + (float)x * TILE_SIZE, TILE_SIZE / 2 + (float)y * TILE_SIZE }, TILE_SIZE, TILE_SIZE);
+				Utils::DrawRect(hdc, { TILE_SIZE / 2 + (float)x * TILE_SIZE + 1, TILE_SIZE / 2 + (float)y * TILE_SIZE + 1 }, TILE_SIZE - 25, TILE_SIZE - 25);
+				Utils::DrawCircle(hdc, { TILE_SIZE / 2 + (float)x * TILE_SIZE, TILE_SIZE / 2 + (float)y * TILE_SIZE }, 10);
+				break;
 			default:
 				break;
 			}

@@ -15,6 +15,7 @@ public:
 	void Jump();
 	void Move();
 	void ApplyGravity();
+	void GoStraight(bool left);
 	void RecordPos();
 	void CheckFall();
 	void CheckGoal();
@@ -25,6 +26,7 @@ public:
 	virtual void OnCollisionEnterBelow(Collider* collider) override;
 
 	Vector2D GetPos() { return _pos; }
+	void SetPos(Vector2D pos) { _pos = pos; }
 
 	bool IsColliding() { return _bIsColliding; }
 	void SetColliding(bool IsColliding) { _bIsColliding = IsColliding; }
@@ -39,6 +41,7 @@ private:
 	float _gravity = 0.02;
 
 	bool _bIsColliding = false;
+	bool _bStraight = false;
 
 	list<Vector2D> _prevPoses;
 	float _recordTimer = 0.f;

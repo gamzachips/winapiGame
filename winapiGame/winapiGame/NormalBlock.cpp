@@ -3,7 +3,7 @@
 #include "Texture.h"
 
 
-NormalBlock::NormalBlock(Vector2D size) : Block(size)
+NormalBlock::NormalBlock(Vector2D size) : Block(size, TileType::Normal)
 {
 }
 
