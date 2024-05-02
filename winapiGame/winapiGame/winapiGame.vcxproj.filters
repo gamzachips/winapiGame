@@ -36,6 +36,9 @@
     <Filter Include="소스 파일\Resources">
       <UniqueIdentifier>{97b5f163-2fed-461d-a38a-e7734e172ccc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\DataStructure">
+      <UniqueIdentifier>{b4a55149-8461-4191-a9a0-670322512c16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="winapiGame.h">
@@ -131,6 +134,9 @@
     <ClInclude Include="StraightBlock.h">
       <Filter>소스 파일\object</Filter>
     </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>소스 파일\DataStructure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="winapiGame.cpp">
@@ -210,6 +216,9 @@
     </ClCompile>
     <ClCompile Include="StraightBlock.cpp">
       <Filter>소스 파일\object</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>소스 파일\DataStructure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

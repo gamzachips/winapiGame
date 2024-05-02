@@ -16,7 +16,7 @@ void CollisionManager::Update()
 
 	Ball* ball = static_cast<Ball*>(_ballCollider->GetOwner());
 	bool isBallColliding = false;
-	for (list<BoxCollider*>::iterator it = _boxColliders.begin(); it != _boxColliders.end(); it++)
+	for (List<BoxCollider*>::Iterator it = _boxColliders.Begin(); it != _boxColliders.End(); ++it)
 	{
 		Block* block = static_cast<Block*>((*it)->GetOwner());
 
@@ -55,19 +55,25 @@ void CollisionManager::Update()
 
 void CollisionManager::CreateBlockCollider(BoxCollider* collider)
 {
-	_boxColliders.push_back(collider);
+	_boxColliders.PushBack(collider);
 }
 
 void CollisionManager::RemoveBlockCollider(BoxCollider* collider)
 {
-	list<BoxCollider*>::iterator it = remove(_boxColliders.begin(), _boxColliders.end(), collider);
-	_boxColliders.erase(it, _boxColliders.end());
+	for (List<BoxCollider*>::Iterator it = _boxColliders.Begin(); it != _boxColliders.End(); ++it)
+	{
+		if (*it == collider)
+		{
+			_boxColliders.Erase(it);
+			break;
+		}
+	}
 }
 
 void CollisionManager::ResetColliders()
 {
 	_ballCollider = nullptr;
 
-	_boxColliders.clear();
+	_boxColliders.Clear();
 }
 

@@ -43,7 +43,7 @@ private:
 	bool _bIsColliding = false;
 	bool _bStraight = false;
 
-	list<Vector2D> _prevPoses;
+	List<Vector2D> _prevPoses;
 	float _recordTimer = 0.f;
 	float _inputTimer = 0.f;
 	float _deltaTime = 0.f;

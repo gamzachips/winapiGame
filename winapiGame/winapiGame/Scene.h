@@ -15,6 +15,6 @@ public:
 	void DestroyObject(Object* object);
 
 protected:
-	list<Object*> _objects;
+	List<Object*> _objects;
 };
 

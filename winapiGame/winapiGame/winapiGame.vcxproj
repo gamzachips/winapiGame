@@ -137,6 +137,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="CrackedBlock.h" />
     <ClInclude Include="EndingScene.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="NormalBlock.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="SphereCollider.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="CrackedBlock.cpp" />
     <ClCompile Include="EndingScene.cpp" />
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="NormalBlock.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="SphereCollider.cpp" />

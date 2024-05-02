@@ -47,7 +47,7 @@ void Ball::Update()
 
 void Ball::Render(HDC hdc)
 {
-	for (list<Vector2D>::iterator it = _prevPoses.begin(); it != _prevPoses.end(); ++it)
+	for (List<Vector2D>::Iterator it = _prevPoses.Begin(); it != _prevPoses.End(); ++it)
 	{
 		Utils::DrawCircle(hdc, *it, 5);
 	}
@@ -111,10 +111,10 @@ void Ball::RecordPos()
 	{
 		_recordTimer -= 0.01f;
 
-		_prevPoses.push_back(_pos);
+		_prevPoses.PushBack(_pos);
 
-		if (_prevPoses.size() > 15)
-			_prevPoses.pop_front();
+		if (_prevPoses.Size() > 15)
+			_prevPoses.PopFront();
 	}
 }
 

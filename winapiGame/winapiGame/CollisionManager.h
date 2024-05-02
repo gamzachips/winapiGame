@@ -26,5 +26,5 @@ public:
 
 private:
 	SphereCollider* _ballCollider;
-	list<BoxCollider*> _boxColliders;
+	List<BoxCollider*> _boxColliders;
 };

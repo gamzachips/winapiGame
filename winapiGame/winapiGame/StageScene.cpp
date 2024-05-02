@@ -18,12 +18,12 @@ StageScene::StageScene()
 
 StageScene::~StageScene()
 {
-	for (list<Object*>::iterator it = _objects.begin(); it != _objects.end(); it++)
+	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
 	{
 		delete* it;
 		*it = nullptr;
 	}
-	_objects.clear();
+	_objects.Clear();
 }
 
 void StageScene::Init(HWND hwnd)
@@ -31,7 +31,7 @@ void StageScene::Init(HWND hwnd)
 	
 	{
 		Ball* ball = new Ball;
-		_objects.push_back(ball);
+		_objects.PushBack(ball);
 	}
 
 	{
@@ -64,7 +64,7 @@ void StageScene::Init(HWND hwnd)
 						Vector2D pos = {x * TILE_SIZE + TILE_SIZE/2, y * TILE_SIZE + TILE_SIZE / 2 };
 						block->SetPos(pos);
 						block->SetTexture(normalBlockT); 
-						_objects.push_back(block);
+						_objects.PushBack(block);
 						break;
 					}
 					case TileType::Cracked:
@@ -73,7 +73,7 @@ void StageScene::Init(HWND hwnd)
 						Vector2D pos = { x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2 };
 						block->SetPos(pos);
 						block->SetTexture(crackedBlockT);
-						_objects.push_back(block);
+						_objects.PushBack(block);
 						break;
 					}
 					case TileType::Bomb:
@@ -82,7 +82,7 @@ void StageScene::Init(HWND hwnd)
 						Vector2D pos = { x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2 };
 						block->SetPos(pos);
 						block->SetTexture(bombBlockT);
-						_objects.push_back(block);
+						_objects.PushBack(block);
 						break;
 					}
 					case TileType::StraightLeft:
@@ -96,7 +96,7 @@ void StageScene::Init(HWND hwnd)
 						Vector2D pos = { x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2 };
 						block->SetPos(pos);
 						block->SetTexture(straightBlockT);
-						_objects.push_back(block);
+						_objects.PushBack(block);
 						break;
 					}
 				}
@@ -107,7 +107,7 @@ void StageScene::Init(HWND hwnd)
 
 void StageScene::Update()
 {
-	for (list<Object*>::iterator it = _objects.begin(); it != _objects.end(); it++)
+	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
 	{
 		(*it)->Update();
 	}
@@ -116,7 +116,7 @@ void StageScene::Update()
 
 void StageScene::Render(HDC hdc)
 {
-	for (list<Object*>::iterator it = _objects.begin(); it != _objects.end(); it++)
+	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
 	{
 		(*it)->Render(hdc);
 	}

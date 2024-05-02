@@ -14,7 +14,7 @@ EditScene::EditScene()
 EditScene::~EditScene()
 {
 
-	for (list<Object*>::iterator it = _objects.begin(); it != _objects.end(); it++)
+	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
 	{
 		delete* it;
 		*it = nullptr;
@@ -30,13 +30,13 @@ void EditScene::Init(HWND hwnd)
 		Tilemap* tilemap = new Tilemap();
 		tilemap->LoadTilemap("Tilemap", SceneManager::GetInstance()->GetStageNum());
 		tilemapObject->SetTilemap(tilemap);
-		_objects.push_back(tilemapObject);
+		_objects.PushBack(tilemapObject);
 	}
 }
 
 void EditScene::Update()
 {
-	for (list<Object*>::iterator it = _objects.begin(); it != _objects.end(); it++)
+	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
 	{
 		(*it)->Update();
 	}
@@ -44,7 +44,7 @@ void EditScene::Update()
 
 void EditScene::Render(HDC hdc)
 {
-	for (list<Object*>::iterator it = _objects.begin(); it != _objects.end(); it++)
+	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
 	{
 		(*it)->Render(hdc);
 	}

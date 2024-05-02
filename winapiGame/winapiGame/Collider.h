@@ -44,6 +44,6 @@ protected:
 	bool _bActive = true;
 
 	Object* _owner = nullptr;
-	list<Collider*> _onColliders; //현재 충돌중인 것들
+	List<Collider*> _onColliders; //현재 충돌중인 것들
 };
 
