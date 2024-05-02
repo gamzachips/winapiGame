@@ -12,13 +12,12 @@ Scene::~Scene()
 
 void Scene::DestroyObject(Object* object)
 {
-	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End();)
+	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
 	{
 		if (*it == object)
 		{
-			it = _objects.Erase(it);
+			_objects.Erase(it);
+			break;
 		}
-		else
-			++it;
 	}
 }

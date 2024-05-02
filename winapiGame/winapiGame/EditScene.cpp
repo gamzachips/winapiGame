@@ -14,11 +14,7 @@ EditScene::EditScene()
 EditScene::~EditScene()
 {
 
-	for (List<Object*>::Iterator it = _objects.Begin(); it != _objects.End(); ++it)
-	{
-		delete* it;
-		*it = nullptr;
-	}
+	_objects.Clear();
 }
 
 void EditScene::Init(HWND hwnd)

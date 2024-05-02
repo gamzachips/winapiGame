@@ -70,8 +70,8 @@ public:
 
 	void Clear()
 	{
-		for (List<T>::Iterator it = Begin(); it != End();)
-			it = Iterator(Erase(it));
+		while (_size > 0)
+			Erase(Begin());
 	}
 
 	Iterator Insert(Iterator pos, T data)
@@ -103,11 +103,13 @@ public:
 		_size--;
 		Node<T>* prevNode = pos._node->_prev;
 		Node<T>* nextNode = pos._node->_next;
-		delete pos._node;
-
+		
 		prevNode->_next = nextNode;
 		nextNode->_prev = prevNode;
-		return Iterator(prevNode);
+
+		delete pos._node;
+
+		return Iterator(nextNode);
 	}
 
 	Iterator Begin()
