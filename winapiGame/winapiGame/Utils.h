@@ -6,8 +6,8 @@ using namespace std;
 class Utils
 {
 public:
-	//temp
-	static void DrawText(HDC hdc, Vector2D pos, const wstring& str);
+
+	static void DrawTextWithFontSize(HDC hdc, POINT pos, const WCHAR* str, int fontSize);
 	static void DrawRect(HDC hdc, Vector2D pos, int width, int height);
 	static void DrawCircle(HDC hdc, Vector2D pos, int radius);
 

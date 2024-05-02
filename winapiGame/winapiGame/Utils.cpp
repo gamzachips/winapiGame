@@ -1,10 +1,35 @@
 #include "pch.h"
 #include "Utils.h"
 
-void Utils::DrawText(HDC hdc, Vector2D pos, const wstring& str)
-{
-	::TextOut(hdc, static_cast<int32>(pos.x), static_cast<int32>(pos.y), str.c_str(), static_cast<int32>(str.size()));
-}
+void Utils::DrawTextWithFontSize(HDC hdc, POINT pos, const WCHAR* str, int fontSize) {
+    HFONT hFont = ::CreateFont(
+        -fontSize,                      // Height of font
+        0,                              // Width of font
+        0,                              // Angle of escapement
+        0,                              // Orientation angle
+        FW_NORMAL,                      // Font weight
+        FALSE,                          // Italic
+        FALSE,                          // Underline
+        FALSE,                          // Strikeout
+        DEFAULT_CHARSET,                // Character set identifier
+        OUT_DEFAULT_PRECIS,             // Output precision
+        CLIP_DEFAULT_PRECIS,            // Clipping precision
+        DEFAULT_QUALITY,                // Output quality
+        DEFAULT_PITCH | FF_DONTCARE,    // Pitch and family
+        L"Arial"                        // Font face name
+    );
+
+    if (hFont) {
+        HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+        RECT rc = { pos.x, pos.y, 0, 0 };
+        SetTextColor(hdc, WHITE);
+        SetBkMode(hdc, TRANSPARENT);//배경색 투영하기.
+        ::DrawText(hdc, str, -1, &rc, DT_NOCLIP);
+        SelectObject(hdc, hOldFont);
+        DeleteObject(hFont);
+    }
+ 
+};
 
 void Utils::DrawRect(HDC hdc, Vector2D pos, int width, int height)
 {
